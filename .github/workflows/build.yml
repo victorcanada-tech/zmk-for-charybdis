@@ -30,8 +30,9 @@ jobs:
 
       - name: West build (settings_reset, optional)
         run: west build -s zmk/app -b nice_nano_v2 -- -DSHIELD=settings_reset
-        - name: Upload left firmware
-  uses: actions/upload-artifact@v4
-  with:
-    name: firmware-left
-    path: build/charybdis_left/zephyr/zmk.uf2
+      
+      - name: Upload left firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-left
+          path: build/charybdis_left/zephyr/zmk.uf2
