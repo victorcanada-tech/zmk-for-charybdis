@@ -84,7 +84,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp KP_MINUS>, <&kp RA(GRAVE)>;
+            bindings = <&kp_minus_morph>, <&kp RA(GRAVE)>;
         };
 
         td4: tap_dance_4 {
@@ -168,7 +168,7 @@
 
         layer_0 {
             bindings = <
-&kp Q        &kp W      &hm LALT E       &hm_ca 0 R        &hm_sa 0 T           &hm_sa 0 Y         &hm_ca 0 U         &hm LALT I        &kp O      &kp P
+&lt 3 Q      &kp W      &hm LALT E       &hm_ca 0 R        &hm_sa 0 T           &hm_sa 0 Y         &hm_ca 0 U         &hm LALT I        &kp O      &kp P
 &hm LSHFT A  &hm LALT S &hm LCTRL D      &hm LGUI F         &kp G                &ht_td0 SQT 0      &ht_td5 SQT 0      &hm RCTRL K       &hm RALT L &ht_td1 KP_DOT 0
 &kp Z        &kp X      &kp C            &kp V              &kp B                &ht_td2 LA(SEMI) 0  &hm LCTRL M        &kp LA(SEMI)      &ht_td4 KP_MULTIPLY 0  &kp ESC
                          &tog 2           &kp TAB            &lt 2 BSPC           &lt 1 RET           &kp SPACE
