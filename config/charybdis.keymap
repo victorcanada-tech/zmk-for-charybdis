@@ -11,6 +11,26 @@
 };
 
 / {
+    macros {
+        mod_ca: mod_ctrl_alt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL &kp LALT>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LALT &kp LCTRL>;
+        };
+
+        mod_sa: mod_shift_alt {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT &kp LALT>
+                , <&macro_pause_for_release>
+                , <&macro_release &kp LALT &kp LSHFT>;
+        };
+    };
+
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
@@ -21,7 +41,23 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // --- Tap-dances (tap / double-tap) ---
+        hm_ca: hm_ctrl_alt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&mod_ca>, <&kp>;
+        };
+
+        hm_sa: hm_shift_alt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "balanced";
+            bindings = <&mod_sa>, <&kp>;
+        };
 
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
@@ -65,8 +101,6 @@
             bindings = <&kp J>, <&sk LGUI>;
         };
 
-        // --- Hold-tap wrappers (hold = keycode, tap = tap-dance) ---
-        // TD(0): tap=H, double-tap=RA(N2), hold=SQT(')
         ht_td0: ht_td0 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -76,7 +110,6 @@
             bindings = <&kp>, <&td0>;
         };
 
-        // TD(1): tap=LS(MINUS), double-tap=OSM(Shift), hold=KP_DOT
         ht_td1: ht_td1 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -86,7 +119,6 @@
             bindings = <&kp>, <&td1>;
         };
 
-        // TD(2): tap=N, double-tap=SEMI(;), hold=LA(SEMI)(ñ)
         ht_td2: ht_td2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -96,7 +128,6 @@
             bindings = <&kp>, <&td2>;
         };
 
-        // TD(3): tap=KP_MINUS, double-tap=RA(GRAVE), hold=KP_PLUS
         ht_td3: ht_td3 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -106,7 +137,6 @@
             bindings = <&kp>, <&td3>;
         };
 
-        // TD(4): tap=KP_SLASH, double-tap=RA(N1), hold=KP_MULTIPLY
         ht_td4: ht_td4 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -116,7 +146,6 @@
             bindings = <&kp>, <&td4>;
         };
 
-        // TD(5): tap=J, double-tap=OSM(GUI), hold=SQT(')
         ht_td5: ht_td5 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -125,6 +154,13 @@
             flavor = "balanced";
             bindings = <&kp>, <&td5>;
         };
+
+        kp_minus_morph: kp_minus_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp KP_MINUS>, <&kp KP_SLASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     keymap {
@@ -132,28 +168,28 @@
 
         layer_0 {
             bindings = <
-&kp Q       &kp W      &hm LALT E         &hm LC(LALT) R    &hm LS(LALT) T       &hm LS(LALT) Y    &hm LC(LALT) U    &hm LALT I       &kp O      &kp P
-&hm LSHFT A &hm LALT S &hm LCTRL D        &hm LGUI F        &kp G                &ht_td0 SQT 0     &ht_td5 SQT 0     &hm RCTRL K      &hm RALT L &ht_td1 KP_DOT 0
-&kp Z       &kp X      &kp C              &kp V             &kp B                &ht_td2 LA(SEMI) 0 &hm LCTRL M       &kp LA(SEMI)     &ht_td4 KP_MULTIPLY 0  &kp ESC
-                        &tog 2             &kp TAB           &lt 2 BSPC           &lt 1 RET         &kp SPACE
+&kp Q        &kp W      &hm LALT E       &hm_ca 0 R        &hm_sa 0 T           &hm_sa 0 Y         &hm_ca 0 U         &hm LALT I        &kp O      &kp P
+&hm LSHFT A  &hm LALT S &hm LCTRL D      &hm LGUI F         &kp G                &ht_td0 SQT 0      &ht_td5 SQT 0      &hm RCTRL K       &hm RALT L &ht_td1 KP_DOT 0
+&kp Z        &kp X      &kp C            &kp V              &kp B                &ht_td2 LA(SEMI) 0  &hm LCTRL M        &kp LA(SEMI)      &ht_td4 KP_MULTIPLY 0  &kp ESC
+                         &tog 2           &kp TAB            &lt 2 BSPC           &lt 1 RET           &kp SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-&none       &none          &none              &kp RA(SQT)       &kp RA(BSLH)         &kp LS(N0)        &kp LS(N1)        &kp LS(MINUS)    &kp RA(N3) &none
-&none       &kp RA(LBKT)   &kp RA(RBKT)       &kp LS(N8)        &kp LS(N9)           &kp LS(N2)        &kp LS(DOT)       &kp DOT          &kp COMMA  &none
-&none       &none          &none              &kp GRAVE         &kp LS(GRAVE)        &kp MINUS         &kp LS(FSLH)      &ht_td3 KP_PLUS 0 &ht_td4 KP_MULTIPLY 0  &none
-                           &trans             &trans            &trans               &none             &trans
+&none        &none          &none            &kp RA(SQT)        &kp RA(BSLH)         &kp LS(N0)         &kp LS(N1)         &kp LS(MINUS)     &kp RA(N3) &none
+&none        &kp RA(LBKT)   &kp RA(RBKT)     &kp LS(N8)         &kp LS(N9)           &kp LS(N2)         &kp LS(DOT)        &kp DOT           &kp COMMA  &none
+&none        &none          &none            &kp GRAVE          &kp LS(GRAVE)        &kp MINUS          &kp LS(FSLH)       &ht_td3 KP_PLUS 0  &ht_td4 KP_MULTIPLY 0  &none
+                            &trans           &trans             &trans               &none               &trans
             >;
         };
 
         layer_2 {
             bindings = <
-&none       &kp N7     &kp N8             &kp N9            &kp X                &kp B             &kp W             &kp E            &none      &none
-&none       &kp N4     &kp N5             &kp N6            &kp Y                &kp H             &kp J             &kp K            &kp L      &none
-&none       &kp N1     &kp N2             &kp N3            &kp P                &kp N0            &kp LS(N4)        &kp LS(G)        &none      &none
-                       &tog 2             &kp Q             &trans               &kp LS(DOT)       &kp V
+&none        &kp N7     &kp N8           &kp N9             &kp X                &kp B              &kp W              &kp E             &none      &none
+&none        &kp N4     &kp N5           &kp N6             &kp Y                &kp H              &kp J              &kp K             &kp L      &none
+&none        &kp N1     &kp N2           &kp N3             &kp P                &kp N0             &kp LS(N4)         &kp LS(G)         &none      &none
+                        &tog 2           &kp Q              &trans               &kp LS(DOT)         &kp V
             >;
         };
 
