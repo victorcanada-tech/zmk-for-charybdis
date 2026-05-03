@@ -4,66 +4,37 @@
 #include <dt-bindings/zmk/rgb.h>
 
 /* --- DEFINICIONES DE CÓDIGO DIRECTO (ESPAÑOL MAC) --- */
-#define ES_EQL    LS(N0)    // =
-#define ES_PIPE   RA(N1)    // |
-#define ES_SLSH   LS(N7)    // /
-#define ES_UNDS   LS(MINUS) // _
-#define ES_HASH   RA(N3)    // #
-#define ES_EXCL   LS(N1)    // !
-#define ES_COLN   LS(DOT)   // :
-#define ES_DOT    DOT       // .
-#define ES_COMM   COMMA     // ,
-#define ES_AMPS   LS(N6)    // &
-#define ES_MINS   MINUS     // -
-#define ES_PLUS   LS(PLUS)  // +
-#define ES_ASTR   LS(SQT)   // *
-#define ES_LPAR   LS(N8)    // (
-#define ES_RPAR   LS(N9)    // )
-
-/* CONFIGURACIÓN DE CAPAS (&lt) BLINDADA
-   Esta es la forma más segura de asegurar que el pulgar cambie de capa.
-*/
-&lt {
-    tapping-term-ms = <180>;     // Tiempo ligeramente más corto para una respuesta más rápida
-    flavor = "hold-preferred";  // FUERZA el cambio de capa si la tecla se mantiene mínimamente
-    quick-tap-ms = <0>;         // Elimina repeticiones accidentales del Espacio/Enter
-};
+#define ES_EQL    LS(N0)
+#define ES_PIPE   RA(N1)
+#define ES_SLSH   LS(N7)
+#define ES_UNDS   LS(MINUS)
+#define ES_HASH   RA(N3)
+#define ES_EXCL   LS(N1)
+#define ES_COLN   LS(DOT)
+#define ES_DOT    DOT
+#define ES_COMM   COMMA
+#define ES_AMPS   LS(N6)
+#define ES_MINS   MINUS
+#define ES_PLUS   LS(PLUS)
+#define ES_ASTR   LS(SQT)
+#define ES_LPAR   LS(N8)
+#define ES_RPAR   LS(N9)
 
 / {
-    macros {
-        m_parens: m_parens {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>;
-        };
-        m_braces: m_braces {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>;
-        };
-        m_brackets: m_brackets {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>;
-        };
-        m_quotes: m_quotes {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>;
-        };
-        m_s_quotes: m_s_quotes {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
-        };
-        m_backticks: m_backticks {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>;
-        };
-    };
-
     behaviors {
+        /* ESTE ES EL CAMBIO CLAVE: 
+           Hemos creado un hold-tap que no permite la repetición (quick-tap-ms = <0>)
+           y que prioriza el hold sobre el tap pase lo que pase.
+        */
+        lt_p: thumb_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;    // Tiempo de respuesta rápido
+            quick-tap-ms = <0>;         // DESACTIVA la repetición infinita
+            flavor = "hold-preferred";  // Si mantienes, ES capa. Punto.
+            bindings = <&mo>, <&kp>;    // Mantener = Capa (mo), Pulsar = Tecla (kp)
+        };
+
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -99,6 +70,15 @@
         };
     };
 
+    macros {
+        m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>; };
+        m_braces: m_braces { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
+        m_brackets: m_brackets { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>; };
+        m_quotes: m_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
+        m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
+        m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -107,7 +87,7 @@
 &kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T      &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
 &hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G               &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT SEMI
 &kp Z        &kp X        &kp C            &kp V            &kp B               &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                                           &kp TAB          &kp BSPC            &kp ESC          &lt 2 SPACE      &lt 1 ENTER
+                                           &kp TAB          &kp BSPC            &kp ESC          &lt_p 2 SPACE    &lt_p 1 ENTER
             >;
         };
 
