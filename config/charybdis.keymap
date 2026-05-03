@@ -1,3 +1,9 @@
+#include <behaviors.dtsi>
+  #include <dt-bindings/zmk/bt.h>
+  #include <dt-bindings/zmk/keys.h>
+  #include <dt-bindings/zmk/rgb.h>
+
+  /* --- DEFINICIONES DE CÓDIGO DIRECTO (ESPAÑOL MAC) --- */
   #define ES_EQL    LS(N0)
   #define ES_PIPE   RA(N1)
   #define ES_SLSH   LS(N7)
@@ -14,14 +20,14 @@
   #define ES_LPAR   LS(N8)
   #define ES_RPAR   LS(N9)
 
+  /* Override del &lt built-in (debe ir fuera del nodo raíz) */
+  &lt {
+      tapping-term-ms = <250>;
+      flavor = "balanced";
+  };
+
   / {
       behaviors {
-          /* Sobreescribir &lt built-in con settings más cómodos */
-          &lt {
-              tapping-term-ms = <250>;
-              flavor = "balanced";
-          };
-
           /* HOMEROW MODS: require-prior-idle evita misfires al escribir
   rápido */
           hm: homerow_mods {
