@@ -53,13 +53,15 @@
             bindings = <&kp>, <&kp>;
         };
 
+        /* Tap=N, Double Tap=~ (AltGr+4 en ES) */
         td_n_v: td_n_virgulilla {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             bindings = <&kp N>, <&kp RA(N4)>;
         };
 
+        /* Hold=Ñ (SEMI), Tap=N o ~ */
         ht_n_custom: ht_n_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -75,10 +77,10 @@
 
         layer_0 {
             bindings = <
-&kp Q      &kp W      &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T      &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O      &kp P
-&hm LGUI A &hm LALT S &hm LCTRL D      &hm LSHFT F      &kp G                &kp SQT          &hm RSHFT J      &hm RCTRL K  &hm RALT L &hm RGUI SEMI
-&kp Z      &kp X      &kp C            &kp V            &kp B                &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2     &tog 3
-                                      &lt 2 ESC        &kp TAB          &kp BSPC            &kp SPACE        &lt 1 ENTER
+&kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T      &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
+&hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G               &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT SEMI
+&kp Z        &kp X        &kp C            &kp V            &kp B               &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
+                                           &kp TAB          &kp BSPC            &kp ESC          &lt 2 SPACE      &lt 1 ENTER
             >;
         };
 
