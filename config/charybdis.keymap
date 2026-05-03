@@ -4,22 +4,9 @@
 #include <dt-bindings/zmk/rgb.h>
 
 /* --- DEFINICIONES ESPAÑOL MAC --- */
-#define ES_EQL    LS(N0)
+#define ES_TILDE  LA(SEMI)  /* Alt + ñ en Mac saca ~ */
 #define ES_PIPE   RA(N1)
-#define ES_SLSH   LS(N7)
-#define ES_UNDS   LS(MINUS)
-#define ES_HASH   RA(N3)
-#define ES_EXCL   LS(N1)
-#define ES_COLN   LS(DOT)
-#define ES_DOT    DOT
-#define ES_COMM   COMMA
-#define ES_AMPS   LS(N6)
-#define ES_MINS   MINUS
-#define ES_PLUS   LS(PLUS)
-#define ES_ASTR   LS(SQT)
-#define ES_LPAR   LS(N8)
-#define ES_RPAR   LS(N9)
-#define ES_TILDE  LA(SEMI)  /* Alt + ñ en Mac saca la virgulilla ~ */
+#define ES_EQL    LS(N0)
 
 /* Configuración global de Layer-Tap */
 &lt {
@@ -49,7 +36,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Tap Dance para N y Virgulilla */
         td_n_virgulilla: td_n_virgulilla {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -57,7 +43,6 @@
             bindings = <&kp N>, <&kp ES_TILDE>;
         };
 
-        /* Hold-Tap: Mantener = ñ (SEMI), Toque = Tap Dance (n o ~) */
         ht_n_custom: ht_n_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -66,15 +51,6 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&td_n_virgulilla>;
         };
-    };
-
-    macros {
-        m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>; };
-        m_braces: m_braces { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
-        m_brackets: m_brackets { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>; };
-        m_quotes: m_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
-        m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
-        m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
     };
 
     keymap {
@@ -91,10 +67,10 @@
 
         layer_1 {
             bindings = <
-&none        &m_backticks &m_s_quotes  &m_quotes    &none                    &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
-&none        &m_braces    &m_brackets  &m_parens    &none                    &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
-&none        &none        &none        &kp GRAVE    &kp LS(GRAVE)            &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
-                          &trans       &trans       &trans                   &none        &trans
+&none        &none        &none        &none        &none                    &kp ES_EQL   &kp ES_PIPE  &none        &none        &none
+&none        &none        &none        &none        &none                    &none        &none        &none        &none        &none
+&none        &none        &none        &none        &none                    &none        &none        &none        &none        &none
+                          &trans       &none        &trans                   &none        &trans
             >;
         };
 
@@ -109,10 +85,10 @@
 
         layer_3 {
             bindings = <
-&bootloader  &none        &none        &none        &none                    &none        &none        &none        &none        &bootloader
-&bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3             &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
-&none        &none        &none        &none        &none                    &none        &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3       &none
-                          &none        &none        &none                    &none        &none
+&bootloader     &none           &none           &none           &none              &none           &none           &none           &none           &bootloader
+&bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3       &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
+&none           &none           &none           &none           &none              &none           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
+                                &none           &none           &none              &none           &none
             >;
         };
     };
