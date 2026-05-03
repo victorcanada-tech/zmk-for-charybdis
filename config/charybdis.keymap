@@ -3,12 +3,22 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/* Configuracion global de capas y tiempos */
-&lt {
-    tapping-term-ms = <200>;
-    flavor = "balanced";
-    quick-tap-ms = <150>;
-};
+/* --- DEFINICIONES DE CÓDIGO DIRECTO (ESPAÑOL MAC) --- */
+#define ES_EQL    LS(N0)    // =
+#define ES_PIPE   RA(N1)    // |
+#define ES_SLSH   LS(N7)    // /
+#define ES_UNDS   LS(MINUS) // _
+#define ES_HASH   RA(N3)    // #
+#define ES_EXCL   LS(N1)    // !
+#define ES_COLN   LS(DOT)   // :
+#define ES_DOT    DOT       // .
+#define ES_COMM   COMMA     // ,
+#define ES_AMPS   LS(N6)    // &
+#define ES_MINS   MINUS     // -
+#define ES_PLUS   LS(PLUS)  // +
+#define ES_ASTR   LS(SQT)   // *
+#define ES_LPAR   LS(N8)    // (
+#define ES_RPAR   LS(N9)    // )
 
 / {
     macros {
@@ -32,6 +42,16 @@
             #binding-cells = <0>;
             bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>;
         };
+        m_s_quotes: m_s_quotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>;
+        };
+        m_backticks: m_backticks {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>;
+        };
     };
 
     behaviors {
@@ -53,7 +73,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Tap=N, Double Tap=~ (AltGr+4 en ES) */
         td_n_v: td_n_virgulilla {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -61,7 +80,6 @@
             bindings = <&kp N>, <&kp RA(N4)>;
         };
 
-        /* Hold=Ñ (SEMI), Tap=N o ~ */
         ht_n_custom: ht_n_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -86,10 +104,10 @@
 
         layer_1 {
             bindings = <
-&none      &none      &none        &m_quotes   &none            &kp LS(N0)       &kp LS(N1)  &kp LS(MINUS) &kp RA(N3) &none
-&none      &m_braces  &m_brackets  &m_parens   &none            &kp LS(N2)       &kp LS(DOT) &kp DOT       &kp COMMA  &none
-&none      &none      &none        &kp GRAVE   &kp LS(GRAVE)    &kp MINUS        &kp LS(FSLH) &kp PLUS      &kp STAR   &none
-                                      &trans       &trans      &trans            &none            &trans
+&none        &m_backticks &m_s_quotes  &m_quotes    &none            &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
+&none        &m_braces    &m_brackets  &m_parens    &none            &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
+&none        &none        &none        &kp GRAVE    &kp LS(GRAVE)    &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
+                                      &trans       &trans          &trans           &none            &trans
             >;
         };
 
