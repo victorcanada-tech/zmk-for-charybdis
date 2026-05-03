@@ -1,4 +1,4 @@
-#include <behaviors.dtsi>
+  #include <behaviors.dtsi>
   #include <dt-bindings/zmk/bt.h>
   #include <dt-bindings/zmk/keys.h>
   #include <dt-bindings/zmk/rgb.h>
@@ -20,7 +20,7 @@
   #define ES_LPAR   LS(N8)
   #define ES_RPAR   LS(N9)
 
-  /* Override de &lt - igual al que funcionaba ayer */
+  /* Override de &lt - igual al que funcionaba */
   &lt {
       tapping-term-ms = <200>;
       flavor = "balanced";
@@ -52,7 +52,7 @@
               compatible = "zmk,behavior-tap-dance";
               #binding-cells = <0>;
               tapping-term-ms = <250>;
-              bindings = <&kp N>, <&m_enye>;
+              bindings = <&kp N>, <&kp SEMI>;
           };
 
           ht_n_custom: ht_n_custom {
@@ -66,23 +66,12 @@
       };
 
       macros {
-          m_enye: m_enye { compatible = "zmk,behavior-macro"; #binding-cells
-  = <0>; bindings = <&kp RA(N)>, <&kp N>; };
-          m_parens: m_parens { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>; };
-          m_braces: m_braces { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp
-  LEFT>; };
-          m_brackets: m_brackets { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>;
-   };
-          m_quotes: m_quotes { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
-          m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
-          m_backticks: m_backticks { compatible = "zmk,behavior-macro";
-  #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp
-  LEFT>; };
+          m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>; };
+          m_braces: m_braces { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
+          m_brackets: m_brackets { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>; };
+          m_quotes: m_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
+          m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
+          m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
       };
 
       keymap {
@@ -90,54 +79,37 @@
 
           layer_0 {
               bindings = <
-  &kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T
-       &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
-  &hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G
-       &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT
-  SEMI
-  &kp Z        &kp X        &kp C            &kp V            &kp B
-       &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                            &kp TAB          &lt 2 BSPC       &kp ESC
-       &lt 1 RET        &kp SPACE
+  &kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T       &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
+  &hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G                &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT SEMI
+  &kp Z        &kp X        &kp C            &kp V            &kp B                &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
+                            &kp TAB          &lt 2 BSPC       &kp ESC              &lt 1 RET        &lt 2 SPACE
               >;
           };
 
           layer_1 {
               bindings = <
-  &none        &m_backticks &m_s_quotes  &m_quotes    &none            &kp
-  ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
-  &none        &m_braces    &m_brackets  &m_parens    &none            &kp
-  ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
-  &none        &none        &none        &kp GRAVE    &kp LS(GRAVE)    &kp
-  ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
-                            &trans       &trans       &trans           &none
-         &trans
+  &none        &m_backticks &m_s_quotes  &m_quotes    &none                    &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
+  &none        &m_braces    &m_brackets  &m_parens    &none                    &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
+  &none        &none        &none        &kp GRAVE    &kp LS(GRAVE)            &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
+                            &trans       &trans       &trans                   &none        &trans
               >;
           };
 
           layer_2 {
               bindings = <
-  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5          &kp N6
-        &kp N7       &kp N8       &kp N9       &kp N0
-  &none        &none        &none        &none        &none           &kp
-  LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
-  &none        &none        &none        &none        &none           &none
-        &none        &none        &tog 2       &none
-                            &trans       &trans       &trans          &trans
-        &trans
+  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5                   &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
+  &none        &none        &none        &none        &none                    &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
+  &none        &none        &none        &none        &none                    &none        &none        &none        &tog 2       &none
+                            &trans       &trans       &trans                   &trans       &trans
               >;
           };
 
           layer_3 {
               bindings = <
-  &bootloader  &none        &none        &none        &none           &none
-           &none           &none           &none           &bootloader
-  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &rgb_ug
-  RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
-  &none        &none        &none        &none        &none           &none
-           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
-                            &none        &none        &none           &none
-           &none
+  &bootloader  &none        &none        &none        &none                    &none        &none        &none        &none        &bootloader
+  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3           &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
+  &none        &none        &none        &none        &none                    &none        &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3       &none
+                            &none        &none        &none                    &none        &none
               >;
           };
       };
