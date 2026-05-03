@@ -3,9 +3,11 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/* --- COLORES --- */
+/* --- COLORES (Hue 0-360) --- */
 #define LILA      280
 #define AZUL      240
+#define ROJO      0
+#define AMARILLO  60
 
 /* --- DEFINICIONES ESPAÑOL MAC --- */
 #define ES_EQL    LS(N0)
@@ -23,10 +25,12 @@
 #define ES_ASTR   LS(SQT)
 #define ES_LPAR   LS(N8)
 #define ES_RPAR   LS(N9)
+#define ES_LABK   GRAVE
+#define ES_RABK   LS(GRAVE)
 
 / {
     macros {
-        /* Macro: Activa Capa 1 + Color Azul, al soltar vuelve a Lila */
+        /* Macro para Capa 1 Momentánea + Color Azul */
         mo_l1_color: mo_l1_color {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -37,7 +41,22 @@
                        <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
         };
 
-        m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N8)>, <&kp LS(N9)>, <&kp LEFT>; };
+        /* Macros para Capas fijas con Color */
+        tog_l2: tog_l2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &tog 2>, <&macro_tap &rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
+        };
+
+        tog_l3: tog_l3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &tog 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
+        };
+
+        /* Macros de Símbolos */
+        m_angle: m_angle { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LABK>, <&kp ES_RABK>, <&kp LEFT>; };
+        m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LPAR>, <&kp ES_RPAR>, <&kp LEFT>; };
         m_braces: m_braces { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
         m_brackets: m_brackets { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>; };
         m_quotes: m_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
@@ -46,30 +65,11 @@
     };
 
     behaviors {
-        td_n_v: td_n_v {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <250>;
-            bindings = <&kp N>, <&kp LA(SEMI)>;
-        };
-
-        ht_n_custom: ht_n_custom {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&td_n_v>;
-        };
-
-        /* Hold-Tap especial para el Enter que activa la macro de color */
-        lt_l1_color: lt_l1_color {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            bindings = <&mo_l1_color>, <&kp>;
-        };
+        hm: homerow_mods { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; tapping-term-ms = <200>; quick-tap-ms = <150>; flavor = "balanced"; bindings = <&kp>, <&kp>; };
+        sm: superior_mods { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; tapping-term-ms = <250>; quick-tap-ms = <150>; flavor = "balanced"; bindings = <&kp>, <&kp>; };
+        td_n_v: td_n_virgulilla { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp N>, <&kp LA(SEMI)>; };
+        ht_n_custom: ht_n_custom { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; tapping-term-ms = <200>; quick-tap-ms = <150>; flavor = "tap-preferred"; bindings = <&kp>, <&td_n_v>; };
+        lt_l1: layer_tap_l1 { compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; tapping-term-ms = <200>; flavor = "balanced"; bindings = <&mo_l1_color>, <&kp>; };
     };
 
     keymap {
@@ -77,38 +77,37 @@
 
         layer_0 {
             bindings = <
-&kp Q        &kp W        &kp E            &kp R            &kp T                &kp Y            &kp U            &kp I            &kp O        &kp P
-&kp A        &kp S        &kp D            &kp F            &kp G                &kp SQT          &kp J            &kp K            &kp L        &kp SEMI
-&kp Z        &kp X        &kp C            &kp V            &kp B                &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                /* PULGARES IZQ (3) */                         /* PULGARES DER (2) */
-                &kp TAB      &kp ESC      &kp BSPC                &lt_l1_color 0 RET      &lt 2 SPACE
+&kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T       &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
+&hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G                &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT SEMI
+&kp Z        &kp X        &kp C            &kp V            &kp B                &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog_l2      &tog_l3
+                          &kp TAB          &kp ESC          &kp BSPC             &lt_l1 0 RET     &lt 2 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-&none        &m_backticks &m_s_quotes  &m_quotes    &none                    &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
-&none        &m_braces    &m_brackets  &m_parens    &none                    &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
-&none        &none        &none        &kp GRAVE    &kp LS(GRAVE)            &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
-                          &trans       &trans       &none                    &none        &none
+&none        &m_backticks &m_s_quotes  &m_quotes    &none                &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
+&none        &m_braces    &m_brackets  &m_parens    &none                &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
+&none        &none        &none        &m_angle     &none                &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
+                          &trans       &trans       &none                &none        &none
             >;
         };
 
         layer_2 {
             bindings = <
-&kp N1       &kp N2       &kp N3       &kp N4       &kp N5                   &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
-&none        &none        &none        &none        &none                    &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
-&none        &none        &none        &none        &none                    &none        &none        &none        &tog 2       &none
-                          &trans       &trans       &none                    &none        &none
+&kp N1       &kp N2       &kp N3       &kp N4       &kp N5               &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
+&none        &none        &none        &none        &none                &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
+&none        &none        &none        &none        &none                &none        &none        &none        &tog_l2      &none
+                          &trans       &trans       &none                &none        &none
             >;
         };
 
         layer_3 {
             bindings = <
-&bootloader     &none           &none           &none           &none              &none           &none           &none           &none           &bootloader
-&bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3       &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
-&none           &none           &none           &none           &none              &none           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
-                                &none           &none           &none              &none           &none
+&bootloader  &none        &none        &none        &none                &none           &none           &none           &none           &bootloader
+&bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3         &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
+&none        &none        &none        &none        &none                &none           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog_l3         &none
+                          &none        &none        &none                &none           &none
             >;
         };
     };
