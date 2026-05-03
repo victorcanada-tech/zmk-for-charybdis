@@ -22,15 +22,17 @@
 
   / {
       behaviors {
+          /* PULGARES: sin quick-tap ni require-prior-idle.
+             Mantener = capa, tap = tecla. */
           lt_p: thumb_layer_tap {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
               tapping-term-ms = <200>;
-              require-prior-idle-ms = <150>;
               flavor = "balanced";
               bindings = <&mo>, <&kp>;
           };
 
+          /* HOMEROW MODS: require-prior-idle evita misfires al escribir rápido */
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
