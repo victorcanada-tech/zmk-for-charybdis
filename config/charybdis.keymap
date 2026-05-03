@@ -55,14 +55,15 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // Comportamiento especial para la N/Ñ
+        // Tap Dance para N y Ñ
         td_n_tilde: td_n_tilde {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp N>, <&kp RA(NTILDE)>;
+            bindings = <&kp N>, <&kp RA(N)>;
         };
 
+        // Hold-Tap para la tecla N: Mantener = Ñ, Pulsar = N
         ht_n_esp: ht_n_esp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -80,7 +81,7 @@
             bindings = <
 &kp Q      &kp W      &mt LALT E   &mt LCA R   &mt LSA T        &mt LSA Y          &mt LCA U   &hm LALT I   &kp O      &kp P
 &hm LGUI A &hm LALT S &hm LCTRL D  &hm LSHFT F &kp G            &kp SQT            &kp J       &hm LCTRL K  &hm LALT L &hm RGUI SEMI
-&kp Z      &kp X      &kp C        &kp V       &kp B            &ht_n_esp NTILDE 0 &kp M       &kp COMMA    &tog 2     &tog 3
+&kp Z      &kp X      &kp C        &kp V       &kp B            &ht_n_esp RA(N) N  &kp M       &kp COMMA    &tog 2     &tog 3
                       &lt 2 ESC    &kp TAB     &kp BACKSPACE    &kp SPACE          &lt 1 ENTER
             >;
         };
