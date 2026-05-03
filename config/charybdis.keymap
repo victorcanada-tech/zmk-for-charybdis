@@ -22,7 +22,6 @@
 
   / {
       behaviors {
-          /* HOMEROW MODS */
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
@@ -89,8 +88,8 @@
   SEMI
   &kp Z        &kp X        &kp C            &kp V            &kp B
        &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                                             &kp TAB          &kp BACKSPACE
-       &kp ESC          &lt 2 SPACE      &lt 1 ENTER
+                            &kp TAB          &kp BACKSPACE    &kp ESC
+       &lt 2 SPACE      &lt 1 ENTER
               >;
           };
 
@@ -102,34 +101,34 @@
   ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
   &none        &none        &none        &kp GRAVE    &kp LS(GRAVE)    &kp
   ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
-                                         &trans       &trans           &trans
-         &none        &trans
+                            &trans       &trans       &trans           &none
+         &trans
               >;
           };
 
           layer_2 {
               bindings = <
-  &kp N1     &kp N2     &kp N3       &kp N4      &kp N5           &kp N6
-        &kp N7      &kp N8        &kp N9     &kp N0
-  &none      &none      &none        &none       &none            &kp LEFT
-        &kp DOWN    &kp UP        &kp RIGHT  &none
-  &none      &none      &none        &none       &none            &none
-        &none       &none         &tog 2     &none
-                                     &trans      &trans           &trans
-        &trans      &trans
+  &kp N1       &kp N2       &kp N3       &kp N4       &kp N5          &kp N6
+        &kp N7       &kp N8       &kp N9       &kp N0
+  &none        &none        &none        &none        &none           &kp
+  LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
+  &none        &none        &none        &none        &none           &none
+        &none        &none        &tog 2       &none
+                            &trans       &trans       &trans          &trans
+        &trans
               >;
           };
 
           layer_3 {
               bindings = <
-  &bootloader &none        &none        &none        &none           &none
-          &none           &none           &none           &bootloader
-  &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3    &rgb_ug
+  &bootloader  &none        &none        &none        &none           &none
+           &none           &none           &none           &bootloader
+  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &rgb_ug
   RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
   &none        &none        &none        &none        &none           &none
            &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
-                                                      &none        &none
-        &none           &none           &none
+                            &none        &none        &none           &none
+           &none
               >;
           };
       };
