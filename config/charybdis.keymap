@@ -20,11 +20,13 @@
 #define ES_LPAR   LS(N8)    // (
 #define ES_RPAR   LS(N9)    // )
 
-/* Configuracion global de capas y tiempos */
+/* CONFIGURACIÓN DE CAPAS (&lt) BLINDADA
+   Esta es la forma más segura de asegurar que el pulgar cambie de capa.
+*/
 &lt {
-    tapping-term-ms = <200>;
-    flavor = "balanced";
-    quick-tap-ms = <0>; // DESACTIVADO para evitar la repetición accidental y forzar el cambio de capa
+    tapping-term-ms = <180>;     // Tiempo ligeramente más corto para una respuesta más rápida
+    flavor = "hold-preferred";  // FUERZA el cambio de capa si la tecla se mantiene mínimamente
+    quick-tap-ms = <0>;         // Elimina repeticiones accidentales del Espacio/Enter
 };
 
 / {
