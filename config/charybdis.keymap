@@ -1,10 +1,3 @@
-
-  #include <behaviors.dtsi>
-  #include <dt-bindings/zmk/bt.h>
-  #include <dt-bindings/zmk/keys.h>
-  #include <dt-bindings/zmk/rgb.h>
-
-  /* --- DEFINICIONES DE CÓDIGO DIRECTO (ESPAÑOL MAC) --- */
   #define ES_EQL    LS(N0)
   #define ES_PIPE   RA(N1)
   #define ES_SLSH   LS(N7)
@@ -23,42 +16,21 @@
 
   / {
       behaviors {
-          /* PULGARES: limpio, sin anti-misfire */
-          lt_p: thumb_layer_tap {
-              compatible = "zmk,behavior-hold-tap";
-              #binding-cells = <2>;
-              tapping-term-ms = <200>;
+          /* Sobreescribir &lt built-in con settings más cómodos */
+          &lt {
+              tapping-term-ms = <250>;
               flavor = "balanced";
-              bindings = <&mo>, <&kp>;
           };
 
-          /* HOMEROW IZQUIERDA: hold solo si la siguiente tecla es del lado
-  derecho o pulgar */
-          hm_l: homerow_mods_left {
+          /* HOMEROW MODS: require-prior-idle evita misfires al escribir
+  rápido */
+          hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
               tapping-term-ms = <280>;
               quick-tap-ms = <175>;
               require-prior-idle-ms = <150>;
               flavor = "balanced";
-              hold-trigger-on-release;
-              hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27
-   28 29 32 33 34>;
-              bindings = <&kp>, <&kp>;
-          };
-
-          /* HOMEROW DERECHA: hold solo si la siguiente tecla es del lado
-  izquierdo o pulgar */
-          hm_r: homerow_mods_right {
-              compatible = "zmk,behavior-hold-tap";
-              #binding-cells = <2>;
-              tapping-term-ms = <280>;
-              quick-tap-ms = <175>;
-              require-prior-idle-ms = <150>;
-              flavor = "balanced";
-              hold-trigger-on-release;
-              hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22
-   23 24 30 31 32>;
               bindings = <&kp>, <&kp>;
           };
 
@@ -109,25 +81,17 @@
       keymap {
           compatible = "zmk,keymap";
 
-          /*
-              MAPA DE POSICIONES (35 teclas):
-               0  1  2  3  4       5  6  7  8  9
-              10 11 12 13 14      15 16 17 18 19
-              20 21 22 23 24      25 26 27 28 29
-                       30 31  32  33 34
-          */
-
           layer_0 {
               bindings = <
-  &kp Q         &kp W         &sm LALT E       &sm LC(LALT) R   &sm LS(LALT)
-  T      &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I    &kp O         &kp P
-  &hm_l LSHFT A &hm_l LALT S  &hm_l LCTRL D    &hm_l LGUI F     &kp G
-         &kp SQT          &hm_r RGUI J     &hm_r RCTRL K &hm_r RALT L  &hm_r
-  RSHFT SEMI
-  &kp Z         &kp X         &kp C            &kp V            &kp B
-         &ht_n_custom SEMI 0 &kp M         &kp COMMA    &tog 2        &tog 3
-                                               &kp TAB          &kp BSPC
-         &kp ESC          &lt_p 2 SPACE    &lt_p 1 ENTER
+  &kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T
+       &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
+  &hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G
+       &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT
+  SEMI
+  &kp Z        &kp X        &kp C            &kp V            &kp B
+       &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
+                                             &kp TAB          &kp BSPC
+       &kp ESC          &lt 2 SPACE      &lt 1 ENTER
               >;
           };
 
@@ -140,7 +104,7 @@
   &none        &none        &none        &kp GRAVE    &kp LS(GRAVE)    &kp
   ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
                                          &trans       &trans           &trans
-              &none            &trans
+         &none        &trans
               >;
           };
 
@@ -152,8 +116,8 @@
         &kp DOWN    &kp UP        &kp RIGHT  &none
   &none      &none      &none        &none       &none            &none
         &none       &none         &tog 2     &none
-                                         &trans       &trans      &trans
-        &trans           &trans
+                                     &trans      &trans           &trans
+        &trans      &trans
               >;
           };
 
@@ -166,7 +130,7 @@
   &none        &none        &none        &none        &none           &none
            &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
                                                       &none        &none
-     &none           &none           &none
+        &none           &none           &none
               >;
           };
       };
