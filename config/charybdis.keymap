@@ -6,21 +6,9 @@
 /* --- COLORES --- */
 #define LILA      280
 #define AZUL      240
-#define ROJO      0
-#define AMARILLO  60
 
 / {
-    macros {
-        /* Macro para Layer 1 + Color Azul */
-        mo_l1: mo_l1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press &mo 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AZUL,100,50)>, <&macro_pause_for_release>, <&macro_release &mo 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
-        };
-    };
-
     behaviors {
-        /* Tap Dance para N y ~ (Alt + ñ en Mac) */
         td_n_v: td_n_v {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -28,7 +16,6 @@
             bindings = <&kp N>, <&kp LA(SEMI)>;
         };
 
-        /* Hold-Tap: Mantener = ñ (SEMI), Toque = n/~ */
         ht_n_custom: ht_n_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -47,8 +34,8 @@
 &kp Q        &kp W        &kp E            &kp R            &kp T                &kp Y            &kp U            &kp I            &kp O        &kp P
 &kp A        &kp S        &kp D            &kp F            &kp G                &kp SQT          &kp J            &kp K            &kp L        &kp SEMI
 &kp Z        &kp X        &kp C            &kp V            &kp B                &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                /* PULGARES IZQUIERDA */             /* PULGARES DERECHA */
-                &kp TAB  &kp ESC  &kp BSPC         &lt 1 RET      &lt 2 SPACE
+                /* 3 PULGARES IZQ */                             /* 2 PULGARES DER */
+                &kp TAB      &kp ESC      &kp BSPC                &lt 1 RET      &lt 2 SPACE
             >;
         };
 
@@ -57,7 +44,7 @@
 &trans       &trans       &trans       &trans       &trans               &kp LS(N0)   &kp RA(N1)   &trans       &trans       &trans
 &trans       &trans       &trans       &trans       &trans               &trans       &trans       &trans       &trans       &trans
 &trans       &trans       &trans       &trans       &trans               &trans       &trans       &trans       &trans       &trans
-                          &trans       &trans       &none                &none        &trans       &trans
+                          &trans       &trans       &none                &none        &none
             >;
         };
 
@@ -66,7 +53,7 @@
 &kp N1       &kp N2       &kp N3       &kp N4       &kp N5               &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
 &none        &none        &none        &none        &none                &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
 &none        &none        &none        &none        &none                &none        &none        &none        &tog 2       &none
-                          &trans       &trans       &none                &none        &trans       &none
+                          &trans       &trans       &none                &none        &none
             >;
         };
 
@@ -75,7 +62,7 @@
 &bootloader     &none           &none           &none           &none              &none           &none           &none           &none           &bootloader
 &bt BT_CLR      &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3       &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
 &none           &none           &none           &none           &none              &none           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog 3          &none
-                                &none           &none           &none              &none           &none           &none
+                                &none           &none           &none              &none           &none
             >;
         };
     };
