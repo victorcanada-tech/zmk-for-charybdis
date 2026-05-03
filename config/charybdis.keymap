@@ -22,24 +22,31 @@
 
 / {
     behaviors {
-        /* ESTE ES EL CAMBIO CLAVE: 
-           Hemos creado un hold-tap que no permite la repetición (quick-tap-ms = <0>)
-           y que prioriza el hold sobre el tap pase lo que pase.
+        /* 
+           MEJORA EN PULGARES: 
+           Usamos 'balanced'. Si pulsas y sueltas antes del tapping-term, es un TAP (Space/Enter).
+           Si pulsas otra tecla mientras mantienes el pulgar, es un HOLD (Capa).
         */
         lt_p: thumb_layer_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <170>;    // Tiempo de respuesta rápido
-            quick-tap-ms = <0>;         // DESACTIVA la repetición infinita
-            flavor = "hold-preferred";  // Si mantienes, ES capa. Punto.
-            bindings = <&mo>, <&kp>;    // Mantener = Capa (mo), Pulsar = Tecla (kp)
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;       // Permite repetición (doble tap para mantener espacio)
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
         };
 
+        /* 
+           MEJORA EN MODS (A, S, D, F...):
+           Añadimos 'global-quick-tap' para que al escribir rápido no se active el CMD accidentalmente.
+           Subimos el tapping-term a 280ms para mayor seguridad.
+        */
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
+            tapping-term-ms = <280>; 
+            quick-tap-ms = <175>;
+            global-quick-tap;           // Evita que 'F' + 'Espacio' abra el Finder por error
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -47,7 +54,7 @@
         sm: superior_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             quick-tap-ms = <150>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
@@ -96,7 +103,7 @@
 &none        &m_backticks &m_s_quotes  &m_quotes    &none            &kp ES_EQL   &kp ES_PIPE  &kp ES_SLSH  &kp ES_UNDS  &kp ES_HASH
 &none        &m_braces    &m_brackets  &m_parens    &none            &kp ES_EXCL  &kp ES_COLN  &kp ES_DOT   &kp ES_COMM  &kp ES_AMPS
 &none        &none        &none        &kp GRAVE    &kp LS(GRAVE)    &kp ES_MINS  &kp ES_LPAR  &kp ES_PLUS  &kp ES_ASTR  &kp ES_RPAR
-                                      &trans       &trans          &trans           &none            &trans
+                                       &trans       &trans           &trans            &none            &trans
             >;
         };
 
@@ -105,7 +112,7 @@
 &kp N1     &kp N2     &kp N3       &kp N4      &kp N5           &kp N6           &kp N7      &kp N8        &kp N9     &kp N0
 &none      &none      &none        &none       &none            &kp LEFT         &kp DOWN    &kp UP        &kp RIGHT  &none
 &none      &none      &none        &none       &none            &none            &none       &none         &none      &none
-                                      &trans       &trans      &trans           &trans           &trans
+                                       &trans       &trans      &trans           &trans           &trans
             >;
         };
 
@@ -114,7 +121,7 @@
 &bootloader &none        &none        &none        &none           &none           &none           &none           &none           &bootloader
 &bt BT_CLR  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3    &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
 &none        &none        &none        &none        &none           &none           &rgb_ug RGB_HUD &rgb_ug RGB_BRD &none           &none
-                                               &none        &none        &none           &none           &none
+                                                    &none        &none        &none           &none           &none
             >;
         };
     };
