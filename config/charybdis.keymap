@@ -3,7 +3,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
 
-/* --- DEFINICIONES DE CÓDIGO DIRECTO (ESPAÑOL MAC) --- */
+/* --- DEFINICIONES ESPAÑOL MAC --- */
 #define ES_EQL    LS(N0)
 #define ES_PIPE   RA(N1)
 #define ES_SLSH   LS(N7)
@@ -21,32 +21,20 @@
 #define ES_RPAR   LS(N9)
 
 / {
-    behaviors {
-        /* 
-           MEJORA EN PULGARES: 
-           Usamos 'balanced'. Si pulsas y sueltas antes del tapping-term, es un TAP (Space/Enter).
-           Si pulsas otra tecla mientras mantienes el pulgar, es un HOLD (Capa).
-        */
-        lt_p: thumb_layer_tap {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;       // Permite repetición (doble tap para mantener espacio)
-            flavor = "balanced";
-            bindings = <&mo>, <&kp>;
-        };
+    /* Configuramos el tiempo global para el &lt nativo */
+    chosen {
+        zmk,matrix_transform = &default_transform;
+    };
 
-        /* 
-           MEJORA EN MODS (A, S, D, F...):
-           Añadimos 'global-quick-tap' para que al escribir rápido no se active el CMD accidentalmente.
-           Subimos el tapping-term a 280ms para mayor seguridad.
-        */
+    behaviors {
+        /* Mantenemos los mods de las letras porque ZMK NO tiene un "&hm" nativo, 
+           hay que definirlo para que las letras funcionen como modificadores. */
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <280>; 
             quick-tap-ms = <175>;
-            global-quick-tap;           // Evita que 'F' + 'Espacio' abra el Finder por error
+            global-quick-tap;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -94,7 +82,7 @@
 &kp Q        &kp W        &sm LALT E       &sm LC(LALT) R   &sm LS(LALT) T      &sm LS(LALT) Y   &sm LC(LALT) U   &sm LALT I   &kp O        &kp P
 &hm LSHFT A  &hm LALT S   &hm LCTRL D      &hm LGUI F       &kp G               &kp SQT          &hm RGUI J       &hm RCTRL K  &hm RALT L   &hm RSHFT SEMI
 &kp Z        &kp X        &kp C            &kp V            &kp B               &ht_n_custom SEMI 0 &kp M        &kp COMMA    &tog 2       &tog 3
-                                           &kp TAB          &kp BSPC            &kp ESC          &lt_p 2 SPACE    &lt_p 1 ENTER
+                                           &kp TAB          &kp BSPC            &kp ESC          &lt 2 SPACE      &lt 1 ENTER
             >;
         };
 
