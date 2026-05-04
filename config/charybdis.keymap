@@ -77,6 +77,8 @@
         m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
         m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
         to_l0: to_l0 { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&macro_tap &to 0>, <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>; };
+        m_tilde: m_tilde { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(N)>, <&kp SPACE>; };
+        m_caret: m_caret { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp SPACE>; };
     };
 
     behaviors {
@@ -115,6 +117,11 @@
         };
         
         /* Tap Dances */
+        td_tld_crt: td_tld_crt { compatible = "zmk,behavior-tap-dance";
+              #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&m_tilde>,
+              <&m_caret>; 
+        };
+
         td_dot_coln: td_dot_coln { 
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>; 
@@ -227,7 +234,7 @@
         layer_1 {
             bindings = <
 &none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &td_eq_hash    &td_dlr_perc
-&none          &m_braces      &m_brackets    &m_parens      &none             &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_excl_ques  &none
+&none          &m_braces      &m_brackets    &m_parens      &none             &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_excl_ques  &td_tld_crt
 &none          &none          &none          &m_angle       &none             &none          &none          &none          &none          &none
                               &none          &none          &none             &none          &none
             >;
