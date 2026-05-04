@@ -107,6 +107,13 @@
             bindings = <&kp N>, <&kp LA(SEMI)>; 
         };
 
+        td_h_sqt: td_h_sqt {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;
+            bindings = <&kp H>, <&kp SQT>;
+        };
+
         /* Hold-Taps que llaman a Tap-Dances */
         hm_shift_td: hm_shift_td { 
             compatible = "zmk,behavior-hold-tap"; 
@@ -126,6 +133,15 @@
             bindings = <&kp>, <&td_n_v>; 
         };
 
+         ht_h_at: ht_h_at {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&td_h_sqt>;
+        };
+
         /* Optimización Símbolos L1 */
         td_mi_un: td_mi_un { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_MINS>, <&kp ES_UNDS>; };
         td_sl_bs: td_sl_bs { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_SLSH>, <&kp ES_BSLH>; };
@@ -138,9 +154,9 @@
         layer_0 {
             bindings = <
 &kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U &sm LALT I     &kp O          &kp P
-&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &kp SQT        &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
+&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT 0        &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
 &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M    &kp ES_DOT     &tog_l2        &tog_l3
-                              &lt_l1 0 TAB   &lt 2 ESC      &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
+                              &lt_l1 0 TAB   &lt_l2 0 ESC   &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
             >;
         };
 
