@@ -140,7 +140,7 @@
 &kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U &sm LALT I     &kp O          &kp P
 &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &kp SQT        &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
 &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M    &kp ES_DOT     &tog_l2        &tog_l3
-                              &kp TAB        &kp ESC        &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
+                              &lt_l1 0 TAB   &lt 2 ESC      &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
             >;
         };
 
@@ -149,7 +149,7 @@
 &none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &kp ES_EQL     &kp ES_HASH
 &none          &m_braces      &m_brackets    &m_parens      &none             &kp ES_COLN    &kp ES_DOT     &kp ES_COMM    &kp ES_AMPS    &kp ES_PIPE
 &none          &none          &none          &m_angle       &none             &kp ES_EXCL    &kp ES_DLR     &kp ES_QUES    &none          &none
-                              &trans         &trans         &trans            &none          &none
+                              &none          &none          &none             &none          &none
             >;
         };
 
@@ -158,7 +158,7 @@
 &kp N1         &kp N2         &kp N3         &kp N4         &kp N5            &kp N6         &kp N7         &kp N8         &kp N9         &kp N0
 &none          &none          &none          &none          &none             &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &none
 &none          &none          &none          &none          &none             &none          &none          &none          &tog_l2        &none
-                              &trans         &trans         &trans            &none          &none
+                              &none          &none          &none             &none          &none
             >;
         };
 
