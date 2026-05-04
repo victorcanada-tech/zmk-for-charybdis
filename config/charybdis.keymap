@@ -10,6 +10,9 @@
 #define AMARILLO  60
 
 /* --- DEFINICIONES MAC ESPAÑOL --- */
+#define ES_AT     RA(N2)
+#define ES_SEMI   LS(COMMA)
+#define ES_PERC   LS(N5)
 #define ES_EQL    LS(N0)
 #define ES_PIPE   RA(N1)
 #define ES_SLSH   LS(N7)
@@ -56,11 +59,11 @@
         };
         
         /* Macros envolventes */
-        m_angle: m_angle { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LABK>, <&kp ES_RABK>, <&kp LEFT>; };
-        m_parens: m_parens { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LPAR>, <&kp ES_RPAR>, <&kp LEFT>; };
-        m_braces: m_braces { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
+        m_angle: m_angle       { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LABK>, <&kp ES_RABK>, <&kp LEFT>; };
+        m_parens: m_parens     { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LPAR>, <&kp ES_RPAR>, <&kp LEFT>; };
+        m_braces: m_braces     { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(LBKT)>, <&kp RA(RBKT)>, <&kp LEFT>; };
         m_brackets: m_brackets { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp RA(SQT)>, <&kp RA(BSLH)>, <&kp LEFT>; };
-        m_quotes: m_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
+        m_quotes: m_quotes     { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
         m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
         m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
     };
@@ -93,6 +96,48 @@
         };
         
         /* Tap Dances */
+        td_dot_coln: td_dot_coln { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_DOT>, <&kp ES_COLN>; 
+        };
+
+        td_comm_semi: td_comm_semi { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_COMM>, <&kp ES_SEMI>; 
+        };
+
+        td_amp_pipe: td_amp_pipe { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_AMPS>, <&kp ES_PIPE>; 
+        };
+
+        td_excl_ques: td_excl_ques { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_EXCL>, <&kp ES_QUES>; 
+        };
+
+        td_dlr_perc: td_dlr_perc { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_DLR>, <&kp ES_PERC>; 
+        };
+
+        td_eq_hash: td_eq_hash { 
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>; 
+            tapping-term-ms = <200>; 
+            bindings = <&kp ES_EQL>, <&kp ES_HASH>; 
+        };
+
         td_q_comm: td_q_comm { 
             compatible = "zmk,behavior-tap-dance"; 
             #binding-cells = <0>; 
@@ -154,17 +199,17 @@
         layer_0 {
             bindings = <
 &kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U &sm LALT I     &kp O          &kp P
-&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT 0        &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
-&kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M    &kp ES_DOT     &tog_l2        &tog_l3
-                              &lt_l1 0 TAB   &lt_l2 0 ESC   &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
+&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT 0 &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
+&kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M          &kp ES_DOT     &tog_l2        &tog_l3
+                              &lt_l1 0 TAB   &lt 2 ESC   &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-&none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &kp ES_EQL     &kp ES_HASH
-&none          &m_braces      &m_brackets    &m_parens      &none             &kp ES_COLN    &kp ES_DOT     &kp ES_COMM    &kp ES_AMPS    &kp ES_PIPE
-&none          &none          &none          &m_angle       &none             &kp ES_EXCL    &kp ES_DLR     &kp ES_QUES    &none          &none
+&none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &td_eq_hash    &td_dlr_perc
+&none          &m_braces      &m_brackets    &m_parens      &none             &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_excl_ques  &none
+&none          &none          &none          &m_angle       &none             &none          &none          &none          &none          &none
                               &none          &none          &none             &none          &none
             >;
         };
