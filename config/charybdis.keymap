@@ -66,6 +66,7 @@
         m_quotes: m_quotes     { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
         m_s_quotes: m_s_quotes { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
         m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
+        to_l0: to_l0 { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&macro_tap &to 0>, <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>; };
     };
 
     behaviors {
@@ -198,9 +199,9 @@
 
         layer_0 {
             bindings = <
-&kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U &sm LALT I     &kp O          &kp P
+&kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U   &sm LALT I     &kp O          &kp P
 &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT 0 &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
-&kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M          &kp ES_DOT     &tog_l2        &tog_l3
+&kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M       &kp ES_DOT     &tog_l2        &tog_l3
                               &lt_l1 0 TAB   &lt 2 ESC   &kp BSPC          &lt_l1 0 RET   &lt 2 SPACE
             >;
         };
@@ -218,16 +219,16 @@
             bindings = <
 &kp N1         &kp N2         &kp N3         &kp N4         &kp N5            &kp N6         &kp N7         &kp N8         &kp N9         &kp N0
 &none          &none          &none          &none          &none             &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &none
-&none          &none          &none          &none          &none             &none          &none          &none          &tog_l2        &none
+&none          &none          &none          &none          &none             &none          &none          &none          &to_l0        &none
                               &none          &none          &none             &none          &none
             >;
         };
 
         layer_3 {
             bindings = <
-&bootloader    &none          &none          &none          &none             &none          &none          &none          &none          &bootloader
-&bt BT_CLR     &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3      &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_BRI &none
-&none          &none          &none          &none          &none             &none          &rgb_ug RGB_HUD &rgb_ug RGB_BRD &tog_l3        &none
+&bootloader    &none          &none          &none          &none             &none            &none            &none            &none            &bootloader
+&bt BT_CLR     &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3      &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &none
+&none          &none          &none          &none          &none             &none            &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &none            &to_l0
                               &none          &none          &none             &none          &none
             >;
         };
