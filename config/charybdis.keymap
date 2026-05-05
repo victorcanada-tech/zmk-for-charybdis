@@ -266,18 +266,14 @@
             >;
         };
 
-  layer_4 {
-      /* MOUSE / TRACKBALL */
-      bindings = <
-  &kp LG(Z)      &kp LG(X)      &kp LG(C)      &kp LG(V)      &kp LG(A)
-     &none          &none          &none          &none          &none
-  &kp LSHFT      &kp LALT       &kp LCTRL      &kp LGUI       &none
-      &mkp LCLK      &mkp RCLK      &mkp MCLK      &none          &none
-  &none          &none          &none          &none          &none
-      &none          &none          &none          &none          &to_l0
-                                &mkp LCLK      &mkp RCLK      &mkp MCLK
-      &mkp LCLK      &mkp RCLK
-      >;
-  };
+        layer_4 {
+              /* MOUSE / TRACKBALL */
+              bindings = <
+  &kp LG(Z)      &kp LG(X)      &kp LG(C)      &kp LG(V)      &kp LG(A)         &none          &none          &none          &none          &none
+  &kp LSHFT      &kp LALT       &kp LCTRL      &kp LGUI       &none              &mkp LCLK      &mkp RCLK      &mkp MCLK      &none          &none
+  &none          &none          &none          &none          &none              &none          &none          &none          &none          &to_l0
+                                &mkp LCLK      &mkp RCLK      &mkp MCLK          &mkp LCLK      &mkp RCLK
+              >;
+          };
     };
 };
