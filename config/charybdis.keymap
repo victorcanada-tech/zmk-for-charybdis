@@ -269,10 +269,20 @@
         layer_4 {
               /* MOUSE / TRACKBALL */
               bindings = <
-  &kp LG(Z)      &kp LG(X)      &kp LG(C)      &kp LG(V)      &kp LG(A)         &none          &none          &none          &none          &none
-  &kp LSHFT      &kp LALT       &kp LCTRL      &kp LGUI       &none              &mkp LCLK      &mkp RCLK      &mkp MCLK      &none          &none
-  &none          &none          &none          &none          &none              &none          &none          &none          &none          &to_l0
-                                &mkp LCLK      &mkp RCLK      &mkp MCLK          &mkp LCLK      &mkp RCLK
+  &none          &none          &none          &none          &tog 5             &none          &none          &none          &none          &none
+  &kp LG(Z)      &kp LG(X)      &kp LG(V)      &kp LG(C)      &none              &none          &none          &none          &none          &none
+  &none          &none          &none          &none          &none              &none          &none          &none          &none          &none
+                                &mkp LCLK          &mkp RCLK      &mkp MCLK          &mkp RCLK      &mkp LCLK
+              >;
+          };
+
+        layer_5 {
+              /* SNIPE - todo transparente, solo existe para activar CPI bajo */
+              bindings = <
+  &trans         &trans         &trans         &trans         &tog 5             &trans          &trans         &trans         &trans         &trans
+  &trans         &trans         &trans         &trans         &trans             &trans         &trans         &trans         &trans         &trans
+  &trans         &trans         &trans         &trans         &trans             &trans         &trans         &trans         &trans         &trans
+                                &trans         &trans         &trans             &trans         &trans
               >;
           };
     };
