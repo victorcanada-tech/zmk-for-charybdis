@@ -20,9 +20,9 @@
 		
 		;
 };
-&right_encoder {
-    status = "okay";
-};
+ //&right_encoder {
+  //    status = "okay";
+  //};
 
 // trackball bus
 &pinctrl {
