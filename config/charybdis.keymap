@@ -37,13 +37,6 @@
 
 / {
     macros {
-      tog_l4: tog_l4 {
-          compatible = "zmk,behavior-macro";
-          #binding-cells = <0>;
-          bindings = <&macro_tap &tog 4>,
-                 <&macro_tap &rgb_ug RGB_COLOR_HSB(120,100,50)>; /* Verde */
-  };
-
         mo_l2_color: mo_l2_color {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
