@@ -34,6 +34,7 @@
 #define ES_QUES   LS(MINUS)
 #define ES_BSLH   RA(LS(N7))
 #define ES_DLR    LS(N4)
+#define AS(keycode) &as keycode keycode
 
 / {
     macros {
@@ -86,40 +87,40 @@
         hm: homerow_mods { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
-            tapping-term-ms = <200>; 
-            quick-tap-ms = <150>; 
-            require-prior-idle-ms = <150>;
-            flavor = "tap-preferred"; 
+            tapping-term-ms = <220>;      // Un poco más de margen para evitar mods accidentales
+            quick-tap-ms = <175>; 
+            require-prior-idle-ms = <125>; // Evita que se active un mod si vienes de escribir otra letra
+            flavor = "balanced"; 
             bindings = <&kp>, <&kp>; 
+            hold-trigger-on-release;
         };
 
         sm: superior_mods { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
-            tapping-term-ms = <250>; 
-            quick-tap-ms = <150>; 
-            flavor = "balanced"; 
+            tapping-term-ms = <280>;      // Más alto arriba porque los dedos suelen "arrastrar" más
+            quick-tap-ms = <175>; 
+            require-prior-idle-ms = <125>; 
+            flavor = "tap-preferred";     // Tap-preferred es más seguro para la fila superior
             bindings = <&kp>, <&kp>; 
+        };
+
+        lt_l1: layer_tap_l1 { 
+            compatible = "zmk,behavior-hold-tap"; 
+            #binding-cells = <2>; 
+            tapping-term-ms = <180>; 
+            quick-tap-ms = <160>;
+            flavor = "tap-preferred"; 
+            bindings = <&mo_l1_color>, <&kp>; // ¡Asegúrate de que esta línea esté completa!
         };
 
         lt_l2: layer_tap_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-            flavor = "balanced";
+            tapping-term-ms = <180>;
+            quick-tap-ms = <160>;
+            flavor = "tap-preferred";
             bindings = <&mo_l2_color>, <&kp>;
-          };
-
-        lt_l1: layer_tap_l1 { 
-            compatible = "zmk,behavior-hold-tap"; 
-            #binding-cells = <2>; 
-            tapping-term-ms = <200>; 
-            quick-tap-ms = <150>;
-            require-prior-idle-ms = <125>;
-            flavor = "balanced"; 
-            bindings = <&mo_l1_color>, <&kp>; 
         };
         
         /* Tap Dances */
@@ -184,6 +185,7 @@
             bindings = <&kp N>, <&kp LA(SEMI)>; 
         };
 
+        // Tap Dance simplificado para símbolos
         td_h_sqt: td_h_sqt {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -215,11 +217,10 @@
          ht_h_at: ht_h_at {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <125>;
-            require-prior-idle-ms = <125>;
+            tapping-term-ms = <150>; // Más corto para que sea reactivo
+            quick-tap-ms = <150>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&td_h_sqt>;
+            bindings = <&kp>, <&kp>; // En el keymap pasaremos @ y H
         };
 
         /* Optimización Símbolos L1 */
@@ -233,8 +234,8 @@
 
         layer_0 {
             bindings = <
-&kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y &sm LC(LALT) U   &sm LALT I     &kp O          &kp P
-&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT 0 &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
+&kp Q          &kp W          &sm LALT E     &sm LC(LALT) R &sm LS(LALT) T    &sm LS(LALT) Y      &sm LC(LALT) U   &sm LALT I     &kp O          &kp P
+&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_at ES_AT H    &hm RGUI J     &hm RCTRL K    &hm RALT L     &hm_shift_td RSHFT 0
 &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0 &kp M       &kp ES_DOT     &tog_l2        &tog_l3
                               &lt_l1 0 TAB   &lt_l2 0 BSPC   &kp ESC          &lt_l2 0 RET   &lt_l1 0 SPACE
             >;
@@ -244,7 +245,7 @@
             bindings = <
 &none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &td_eq_hash    &td_dlr_perc
 &none          &m_braces      &m_brackets    &m_parens      &none             &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_excl_ques  &td_tld_crt
-&none          &none          &none          &m_angle       &none             &none          &none          &none          &none          &none
+&none          &none          &none          &m_angle       &none             &none          &kp LBKT       &none          &none          &none
                               &none          &none          &none             &none          &none
             >;
         };
