@@ -97,7 +97,7 @@
         td_ques_comm: td_ques_comm {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>; 
+            tapping-term-ms = <250>; 
             bindings = <&kp ES_QUES>, <&kp ES_COMM>;
         };
 
@@ -128,13 +128,13 @@
         };
 
         /* Tap Dances Útiles */
-        td_h_accent: td_h_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp H>, <&kp LBKT>; };
+        td_h_accent: td_h_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp H>, <&kp LBKT>; };
         td_n_v: td_n_v { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp N>, <&kp LA(SEMI)>; };
-        td_dot_coln: td_dot_coln { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_DOT>, <&kp ES_COLN>; };
-        td_comm_semi: td_comm_semi { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_COMM>, <&kp ES_SEMI>; };
-        td_mi_un: td_mi_un { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_MINS>, <&kp ES_UNDS>; };
-        td_sl_bs: td_sl_bs { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_SLSH>, <&kp ES_BSLH>; };
-        td_pl_as: td_pl_as { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_PLUS>, <&kp ES_ASTR>; };
+        td_dot_coln: td_dot_coln { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_DOT>, <&kp ES_COLN>; };
+        td_comm_semi: td_comm_semi { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_COMM>, <&kp ES_SEMI>; };
+        td_mi_un: td_mi_un { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_MINS>, <&kp ES_UNDS>; };
+        td_sl_bs: td_sl_bs { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_SLSH>, <&kp ES_BSLH>; };
+        td_pl_as: td_pl_as { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_PLUS>, <&kp ES_ASTR>; };
 
         /* Hold-Taps Personalizados */
         ht_h_custom: ht_h_custom {
