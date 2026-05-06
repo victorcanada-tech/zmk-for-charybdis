@@ -87,7 +87,7 @@
         hm: homerow_mods { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
-            tapping-term-ms = <300>; 
+            tapping-term-ms = <400>; 
             quick-tap-ms = <0>; 
             flavor = "tap-preferred"; 
             bindings = <&kp>, <&kp>; 
@@ -97,14 +97,14 @@
         td_ques_comm: td_ques_comm {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <150>; 
+            tapping-term-ms = <200>; 
             bindings = <&kp ES_QUES>, <&kp ES_COMM>;
         };
 
         ht_shft_custom: ht_shft_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <400>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&td_ques_comm>;
@@ -114,7 +114,7 @@
         lt_l1: layer_tap_l1 { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
-            tapping-term-ms = <300>; 
+            tapping-term-ms = <400>; 
             flavor = "tap-preferred"; 
             bindings = <&mo_l1_color>, <&kp>;
         };
@@ -122,14 +122,14 @@
         lt_l2: layer_tap_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <400>;
             flavor = "tap-preferred";
             bindings = <&mo_l2_color>, <&kp>;
         };
 
         /* Tap Dances Útiles */
-        td_h_accent: td_h_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <150>; bindings = <&kp H>, <&kp LBKT>; };
-        td_n_v: td_n_v { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <150>; bindings = <&kp N>, <&kp LA(SEMI)>; };
+        td_h_accent: td_h_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp H>, <&kp LBKT>; };
+        td_n_v: td_n_v { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp N>, <&kp LA(SEMI)>; };
         td_dot_coln: td_dot_coln { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_DOT>, <&kp ES_COLN>; };
         td_comm_semi: td_comm_semi { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_COMM>, <&kp ES_SEMI>; };
         td_mi_un: td_mi_un { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp ES_MINS>, <&kp ES_UNDS>; };
