@@ -108,17 +108,17 @@
         lt_l1: layer_tap_l1 { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
-            tapping-term-ms = <180>; 
-            quick-tap-ms = <160>;
+            tapping-term-ms = <200>; 
+            quick-tap-ms = <140>;
             flavor = "tap-preferred"; 
-            bindings = <&mo_l1_color>, <&kp>; // ¡Asegúrate de que esta línea esté completa!
+            bindings = <&mo_l1_color>, <&kp>;
         };
 
         lt_l2: layer_tap_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <180>;
-            quick-tap-ms = <160>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <140>;
             flavor = "tap-preferred";
             bindings = <&mo_l2_color>, <&kp>;
         };
