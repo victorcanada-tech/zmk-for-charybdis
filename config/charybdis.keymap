@@ -168,9 +168,9 @@
 
         layer_1 {
             bindings = <
-&none          &m_backticks   &m_s_quotes    &m_quotes      &none             &td_sl_bs      &td_pl_as      &td_mi_un      &kp ES_EQL     &kp ES_DLR
-&none          &m_braces      &m_brackets    &m_parens      &none             &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp ES_EXCL    &kp RA(N)
-&none          &none          &none          &m_angle       &none             &none          &kp LBKT       &none          &none          &none
+&none          &m_backticks   &m_s_quotes    &m_quotes      &none             &none          &td_pl_as      &none          &none          &none
+&none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &td_sl_bs      &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp RA(N)
+&none          &none          &none          &m_angle       &none             &td_mi_un      &kp ES_EQL     &kp ES_DLR     &none          &none
                               &none          &none          &none             &none          &none
             >;
         };
