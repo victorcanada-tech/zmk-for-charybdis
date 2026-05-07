@@ -1,4 +1,4 @@
-#include <behaviors.dtsi>
+  #include <behaviors.dtsi>
   #include <dt-bindings/zmk/bt.h>
   #include <dt-bindings/zmk/keys.h>
   #include <dt-bindings/zmk/rgb.h>
@@ -98,7 +98,7 @@
           ht_shft_custom: ht_shft_custom {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <300>;
               flavor = "tap-preferred";
               bindings = <&kp>, <&td_ques_comm>;
           };
@@ -137,7 +137,7 @@
           ht_h_custom: ht_h_custom {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <300>;
               flavor = "tap-preferred";
               bindings = <&kp>, <&td_h_accent>;
           };
@@ -145,7 +145,7 @@
           ht_n_custom: ht_n_custom {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <300>;
               flavor = "tap-preferred";
               bindings = <&kp>, <&td_n_v>;
           };
