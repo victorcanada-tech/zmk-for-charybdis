@@ -83,13 +83,14 @@
       };
 
       behaviors {
-          hm: homerow_mods {
-              compatible = "zmk,behavior-hold-tap";
-              #binding-cells = <2>;
-              tapping-term-ms = <400>;
-              flavor = "tap-preferred";
-              bindings = <&kp>, <&kp>;
-          };
+        hm: homerow_mods {
+          compatible = "zmk,behavior-hold-tap";
+          #binding-cells = <2>;
+          tapping-term-ms = <250>;
+          require-prior-idle-ms = <150>;
+          flavor = "tap-preferred";
+          bindings = <&kp>, <&kp>;
+      };
 
           td_ques_comm: td_ques_comm {
               compatible = "zmk,behavior-tap-dance";
