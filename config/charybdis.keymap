@@ -11,29 +11,29 @@
 #define AMARILLO  60
 
 /* --- DEFINICIONES MAC ESPAÑOL --- */
-#define ES_AT     RA(N2)
-#define ES_SEMI   LS(COMMA)
-#define ES_PERC   LS(N5)
-#define ES_EQL    LS(N0)
-#define ES_PIPE   RA(N1)
-#define ES_SLSH   LS(N7)
-#define ES_UNDS   LS(MINUS)
-#define ES_HASH   RA(N3)
-#define ES_EXCL   LS(N1)
-#define ES_COLN   LS(DOT)
-#define ES_DOT    DOT
-#define ES_COMM   COMMA
-#define ES_AMPS   LS(N6)
-#define ES_MINS   MINUS
-#define ES_PLUS   LS(PLUS)
-#define ES_ASTR   LS(SQT)
-#define ES_LPAR   LS(N8)
-#define ES_RPAR   LS(N9)
-#define ES_LABK   GRAVE
-#define ES_RABK   LS(GRAVE)
-#define ES_QUES   LS(MINUS)
-#define ES_BSLH   RA(LS(N7))
-#define ES_DLR    LS(N4)
+#define ES_AT      RA(N2)
+#define ES_SEMI    LS(COMMA)
+#define ES_PERC    LS(N5)
+#define ES_EQL     LS(N0)
+#define ES_PIPE    RA(N1)
+#define ES_SLSH    LS(N7)
+#define ES_UNDS    LS(MINUS)
+#define ES_HASH    RA(N3)
+#define ES_EXCL    LS(N1)
+#define ES_COLN    LS(DOT)
+#define ES_DOT     DOT
+#define ES_COMM    COMMA
+#define ES_AMPS    LS(N6)
+#define ES_MINS    MINUS
+#define ES_PLUS    LS(PLUS)
+#define ES_ASTR    LS(SQT)
+#define ES_LPAR    LS(N8)
+#define ES_RPAR    LS(N9)
+#define ES_LABK    GRAVE
+#define ES_RABK    LS(GRAVE)
+#define ES_QUES    LS(MINUS)
+#define ES_BSLH    RA(LS(N7))
+#define ES_DLR     LS(N4)
 
 / {
     macros {
@@ -86,10 +86,9 @@
         snipe_mmv: snipe_mmv {
             compatible = "zmk,behavior-mouse-move";
             #binding-cells = <1>;
-            res-multiplier = <1>; /* Esto hace que el movimiento sea de precisión */
+            res-multiplier = <1>;
         };
 
-        /* Comportamiento principal (Homerow Mods) */
         hm: homerow_mods { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
@@ -99,7 +98,6 @@
             bindings = <&kp>, <&kp>; 
         };
 
-        /* La tecla especial que pediste: Shift / ? / , */
         td_ques_comm: td_ques_comm {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -116,7 +114,6 @@
             bindings = <&kp>, <&td_ques_comm>;
         };
 
-        /* Layer Taps */
         lt_l1: layer_tap_l1 { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
@@ -133,7 +130,6 @@
             bindings = <&mo_l2_color>, <&kp>;
         };
 
-        /* Tap Dances Útiles */
         td_h_accent: td_h_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp H>, <&kp LBKT>; };
         td_n_v: td_n_v { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <200>; bindings = <&kp N>, <&kp LA(SEMI)>; };
         td_dot_coln: td_dot_coln { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_DOT>, <&kp ES_COLN>; };
@@ -142,7 +138,6 @@
         td_sl_bs: td_sl_bs { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_SLSH>, <&kp ES_BSLH>; };
         td_pl_as: td_pl_as { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <250>; bindings = <&kp ES_PLUS>, <&kp ES_ASTR>; };
 
-        /* Hold-Taps Personalizados */
         ht_h_custom: ht_h_custom {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -166,57 +161,55 @@
         layer_0 {
             bindings = <
 &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y          &hm LC(LALT) U  &hm LALT I     &kp O          &kp P
-&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0    &hm RGUI J      &hm RCTRL K    &hm RALT L     &ht_shft_custom RSHFT 0
-&kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0     &kp M           &kp ES_DOT     &tog_l2        &tog_l3
-                              &lt_l1 0 TAB   &mo 2          &kp BSPC          &lt_l2 0 RET   &lt_l1 0 SPACE
+&hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G               &ht_h_custom ES_AT 0    &hm RGUI J      &hm RCTRL K    &hm RALT L     &ht_shft_custom RSHFT 0
+&kp Z          &kp X          &kp C          &kp V          &kp B               &ht_n_custom SEMI 0     &kp M           &kp ES_DOT     &tog_l2        &tog_l3
+                                             &lt_l1 0 TAB   &mo 2               &kp BSPC                &lt_l2 0 RET   &lt_l1 0 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-&kp ESC        &m_backticks   &m_s_quotes    &m_quotes      &none             &none          &td_pl_as      &none          &none          &none
-&none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &td_sl_bs      &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp RA(N)
-&none          &none          &none          &m_angle       &none             &td_mi_un      &kp ES_EQL     &kp ES_DLR     &none          &none
-                              &none          &none          &none             &none          &none
+&kp ESC        &m_backticks   &m_s_quotes    &m_quotes      &none               &none           &td_pl_as      &none          &none          &none
+&none          &m_braces      &m_brackets    &m_parens      &kp LEFT            &td_sl_bs       &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp RA(N)
+&none          &none          &none          &m_angle       &none               &td_mi_un       &kp ES_EQL      &kp ES_DLR     &none          &none
+                                             &none          &none               &none               &none          &none
             >;
         };
 
         layer_2 {
             bindings = <
-&kp N1         &kp N2         &kp N3         &kp N4         &kp N5            &kp N6         &kp N7         &kp N8         &kp N9         &kp N0
-&none          &none          &none          &none          &none             &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &none
-&none          &none          &none          &none          &none             &none          &none          &none          &to_l0         &none
-                              &none          &none          &none             &none          &none
+&kp N1         &kp N2          &kp N3          &kp N4          &kp N5             &kp N6          &kp N7          &kp N8          &kp N9          &kp N0
+&none          &none           &none           &none           &none              &kp LEFT        &kp DOWN        &kp UP          &kp RIGHT       &none
+&none          &none           &none           &none           &none              &none           &none           &none           &to_l0          &none
+                                               &none           &none              &none               &none           &none
             >;
         };
 
         layer_3 {
             bindings = <
-&bootloader    &none          &none          &none          &none             &none            &none            &none            &none            &bootloader
-&bt BT_CLR     &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3      &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &none
-&none          &none          &none          &none          &none             &none            &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &none            &to_l0
-                              &none          &none          &none             &none            &none
+&bootloader    &none           &none           &none           &none              &none            &none            &none            &none            &bootloader
+&bt BT_CLR     &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3       &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &none
+&none          &none           &none           &none           &none              &none            &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &none            &to_l0
+                                               &none           &none              &none               &none            &none
             >;
         };
 
-/* Capa 4: Ratón (Mouse) */
-layer_4 {
-    bindings = <
+        layer_4 {
+            bindings = <
 &none        &none        &none        &none        &msc SCRL_UP             &msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &none
 &none        &kp LG(X)    &kp LG(C)    &kp LG(V)    &msc SCRL_DOWN           &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none
 &to 0        &none        &none        &none        &mo 5                    &none           &none           &none           &none            &none
-                                    &mkp LCLK    &mkp RCLK           &mkp MCLK       &mkp RCLK       &mkp LCLK
-    >;
-};
+                                     &mkp LCLK    &mkp RCLK            &mkp MCLK       &mkp RCLK       &mkp LCLK
+            >;
+        };
 
-/* Capa 5: Precisión (Snipe) - Cruceta lado IZQUIERDO (WASD Style) */
-layer_5 {
-    bindings = <
-&none  &none                 &snipe_mmv MOVE_UP    &none                  &none      &none  &none  &none  &none  &none
-&none  &snipe_mmv MOVE_LEFT  &snipe_mmv MOVE_DOWN  &snipe_mmv MOVE_RIGHT  &none      &none  &none  &none  &none  &none
-&to 0  &none                 &none                 &none                  &none      &none  &none  &none  &none  &none
+        layer_5 {
+            bindings = <
+&none  &none                  &snipe_mmv MOVE_UP    &none                  &none      &none  &none  &none  &none  &none
+&none  &snipe_mmv MOVE_LEFT   &snipe_mmv MOVE_DOWN  &snipe_mmv MOVE_RIGHT  &none      &none  &none  &none  &none  &none
+&to 0  &none                  &none                 &none                  &none      &none  &none  &none  &none  &none
                                                    &mkp LCLK              &mkp RCLK  &none  &none  &none
-    >;
-};
+            >;
+        };
     };
 };
