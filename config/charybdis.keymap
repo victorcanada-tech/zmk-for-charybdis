@@ -83,6 +83,12 @@
     };
 
     behaviors {
+        snipe_mmv: snipe_mmv {
+            compatible = "zmk,behavior-mouse-move";
+            #binding-cells = <1>;
+            res-multiplier = <1>; /* Esto hace que el movimiento sea de precisión */
+        };
+
         /* Comportamiento principal (Homerow Mods) */
         hm: homerow_mods { 
             compatible = "zmk,behavior-hold-tap"; 
@@ -162,13 +168,13 @@
 &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y          &hm LC(LALT) U  &hm LALT I     &kp O          &kp P
 &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0    &hm RGUI J      &hm RCTRL K    &hm RALT L     &ht_shft_custom RSHFT 0
 &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0     &kp M           &kp ES_DOT     &tog_l2        &tog_l3
-                              &lt_l1 0 TAB   &lt_l2 0 BSPC  &kp ESC           &lt_l2 0 RET   &lt_l1 0 SPACE
+                              &lt_l1 0 TAB   &mo 2          &kp BSPC          &lt_l2 0 RET   &lt_l1 0 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-&none          &m_backticks   &m_s_quotes    &m_quotes      &none             &none          &td_pl_as      &none          &none          &none
+&kp ESC        &m_backticks   &m_s_quotes    &m_quotes      &none             &none          &td_pl_as      &none          &none          &none
 &none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &td_sl_bs      &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp RA(N)
 &none          &none          &none          &m_angle       &none             &td_mi_un      &kp ES_EQL     &kp ES_DLR     &none          &none
                               &none          &none          &none             &none          &none
@@ -192,5 +198,25 @@
                               &none          &none          &none             &none            &none
             >;
         };
+
+/* Capa 4: Ratón (Mouse) */
+layer_4 {
+    bindings = <
+&none        &none        &none        &none        &msc SCRL_UP             &msc SCRL_UP    &msc SCRL_LEFT  &mmv MOVE_UP    &msc SCRL_RIGHT  &none
+&none        &kp LG(X)    &kp LG(C)    &kp LG(V)    &msc SCRL_DOWN           &msc SCRL_DOWN  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none
+&to 0        &none        &none        &none        &mo 5                    &none           &none           &none           &none            &none
+                                    &mkp LCLK    &mkp RCLK           &mkp MCLK       &mkp RCLK       &mkp LCLK
+    >;
+};
+
+/* Capa 5: Precisión (Snipe) - Cruceta lado IZQUIERDO (WASD Style) */
+layer_5 {
+    bindings = <
+&none  &none                 &snipe_mmv MOVE_UP    &none                  &none      &none  &none  &none  &none  &none
+&none  &snipe_mmv MOVE_LEFT  &snipe_mmv MOVE_DOWN  &snipe_mmv MOVE_RIGHT  &none      &none  &none  &none  &none  &none
+&to 0  &none                 &none                 &none                  &none      &none  &none  &none  &none  &none
+                                                   &mkp LCLK              &mkp RCLK  &none  &none  &none
+    >;
+};
     };
 };
