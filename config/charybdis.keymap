@@ -81,14 +81,6 @@
     };
 
     behaviors {
-      snipe_mmv: snipe_mmv {
-          compatible = "zmk,behavior-mouse-move";
-          #binding-cells = <1>;
-          delay-ms = <0>;
-          time-to-max-speed-ms = <0>;
-          acceleration-exponent = <0>;
-      };
-
         hm: homerow_mods { 
             compatible = "zmk,behavior-hold-tap"; 
             #binding-cells = <2>; 
