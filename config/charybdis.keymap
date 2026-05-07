@@ -1,4 +1,4 @@
-  #include <behaviors.dtsi>
+ #include <behaviors.dtsi>
   #include <dt-bindings/zmk/bt.h>
   #include <dt-bindings/zmk/keys.h>
   #include <dt-bindings/zmk/rgb.h>
@@ -77,13 +77,15 @@
           m_quotes:    m_quotes    { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
           m_s_quotes:  m_s_quotes  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp SQT>, <&kp SQT>, <&kp LEFT>; };
           m_backticks: m_backticks { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(LBKT)>, <&kp LS(LBKT)>, <&kp LEFT>; };
+          m_d_quotes:  m_d_quotes  { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp LS(N2)>, <&kp LS(N2)>, <&kp LEFT>; };
+          m_neq:       m_neq       { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_EXCL>, <&kp ES_EQL>, <&kp SPACE>; };
       };
 
       behaviors {
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <300>;
               flavor = "tap-preferred";
               bindings = <&kp>, <&kp>;
           };
@@ -133,6 +135,12 @@
   ES_BSLH>; };
           td_pl_as:     td_pl_as     { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <220>; bindings = <&kp ES_PLUS>, <&kp
   ES_ASTR>; };
+          td_amp_pipe:  td_amp_pipe  { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <220>; bindings = <&kp ES_AMPS>, <&kp
+  ES_PIPE>; };
+          td_eql_neq:   td_eql_neq   { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <220>; bindings = <&kp ES_EQL>,
+  <&m_neq>; };
+          td_dlr_hash:  td_dlr_hash  { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <220>; bindings = <&kp ES_DLR>, <&kp
+  ES_HASH>; };
 
           ht_h_custom: ht_h_custom {
               compatible = "zmk,behavior-hold-tap";
@@ -156,9 +164,11 @@
 
           layer_0 {
               bindings = <
-  &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y         &hm LC(LALT) U  &hm LALT I     &kp O          &kp P
-  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0   &hm RGUI J      &hm RCTRL K    &hm RALT L     &ht_shft_custom RSHFT 0
-  &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0    &kp M           &kp ES_DOT     &tog_l2        &tog_l3
+  &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y         &hm LC(LALT) U  &hm LALT I     &kp O              &kp P
+  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0   &hm RGUI J      &hm RCTRL K    &hm RALT L
+  &ht_shft_custom RSHFT 0
+  &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0    &kp M           &kp ES_DOT     &tog_l2
+  &tog_l3
                                 &lt_l1 0 TAB   &lt_l2 0 BSPC  &kp BSPC          &lt_l2 0 RET          &lt_l1 0 SPACE
               >;
           };
@@ -166,8 +176,8 @@
           layer_1 {
               bindings = <
   &kp ESC        &m_backticks   &m_s_quotes    &m_quotes      &none             &none          &td_pl_as      &none          &none          &none
-  &none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &td_sl_bs      &td_dot_coln   &td_comm_semi  &kp ES_AMPS    &kp RA(N)
-  &none          &none          &none          &m_angle       &none             &td_mi_un      &kp ES_EQL     &kp ES_DLR     &none          &none
+  &none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &m_d_quotes    &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_sl_bs
+  &none          &none          &none          &m_angle       &none             &td_mi_un      &td_eql_neq    &td_dlr_hash   &none          &none
                                 &none          &none          &none             &none          &none
               >;
           };
