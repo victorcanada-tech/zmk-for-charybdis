@@ -24,8 +24,8 @@
   #define ES_COMM   COMMA
   #define ES_AMPS   LS(N6)
   #define ES_MINS   MINUS
-  #define ES_PLUS   LS(PLUS)
-  #define ES_ASTR   LS(SQT)
+  #define ES_PLUS   RBKT
+  #define ES_ASTR   LS(RBKT)
   #define ES_LPAR   LS(N8)
   #define ES_RPAR   LS(N9)
   #define ES_LABK   GRAVE
@@ -33,7 +33,7 @@
   #define ES_QUES   LS(MINUS)
   #define ES_BSLH   RA(LS(N7))
   #define ES_DLR    LS(N4)
-  #define ES_IQUE   LS(EQUAL)
+  #define ES_IQUE   RA(LS(MINUS))
 
   / {
       macros {
