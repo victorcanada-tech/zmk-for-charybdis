@@ -90,7 +90,7 @@
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <250>;
+              tapping-term-ms = <200>;
               require-prior-idle-ms = <300>;
               quick-tap-ms = <150>;
               flavor = "tap-preferred";
@@ -115,7 +115,8 @@
           lt_l1: layer_tap_l1 {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <200>;
+              quick-tap-ms = <150>;
               flavor = "tap-preferred";
               bindings = <&mo_l1_color>, <&kp>;
           };
@@ -123,7 +124,8 @@
           lt_l2: layer_tap_l2 {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <220>;
+              tapping-term-ms = <200>;
+              quick-tap-ms = <150>;
               flavor = "tap-preferred";
               bindings = <&mo_l2_color>, <&kp>;
           };
