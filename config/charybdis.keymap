@@ -12,6 +12,9 @@
   #define AMARILLO  60
 
   /* --- DEFINICIONES MAC ESPAÑOL --- */
+  #define ES_CARET  LS(LBKT)
+  #define ES_PERC   LS(N5)
+  #define ES_TILDE  RA(SEMI)
   #define ES_AT     RA(N2)
   #define ES_SEMI   LS(COMMA)
   #define ES_EQL    LS(N0)
@@ -124,6 +127,8 @@
               bindings = <&mo_l2_color>, <&kp>;
           };
 
+          td_perc_caret: td_perc_caret { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp ES_PERC>, <&kp
+  ES_CARET>; };
           td_dot_coln:  td_dot_coln  { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp ES_DOT>, <&kp
   ES_COLN>; };
           td_comm_semi: td_comm_semi { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp ES_COMM>, <&kp
@@ -144,8 +149,7 @@
   ES_QUES>; };
           td_at_accent: td_at_accent { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp ES_AT>, <&kp
   LBKT>; };
-          td_ene:       td_ene       { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp SEMI>, <&kp
-  LA(SEMI)>; };
+         td_ene: td_ene { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp SEMI>, <&kp ES_TILDE>; };
       };
 
       keymap {
@@ -153,18 +157,18 @@
 
           layer_0 {
               bindings = <
-  &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y         &hm LC(LALT) U  &hm LALT I     &kp O              &kp P
-  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &kp H                  &hm RGUI J      &hm RCTRL K    &hm RALT L         &ht_shft_custom RSHFT 0
-  &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N                  &kp M           &kp ES_DOT     &tog_l2            &tog_l3
+  &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T      &hm LS(LALT) Y      &hm LC(LALT) U  &hm LALT I     &kp O              &kp P
+  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G               &kp H               &hm RGUI J      &hm RCTRL K    &hm RALT L         &ht_shft_custom RSHFT 0
+  &kp Z          &kp X          &kp C          &kp V          &kp B               &kp N               &kp M           &kp ES_DOT     &tog_l2            &tog_l3
                                 &lt_l1 0 TAB   &lt_l2 0 BSPC  &kp BSPC          &lt_l2 0 RET            &lt_l1 0 SPACE
               >;
           };
 
           layer_1 {
               bindings = <
-  &kp ESC        &m_backticks   &m_s_quotes    &m_quotes      &none             &td_at_accent  &td_ique_ques  &td_pl_as      &td_ene        &none
-  &none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &m_d_quotes    &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_sl_bs
-  &none          &none          &none          &m_angle       &none             &m_s_quotes    &td_eql_neq    &td_dlr_hash   &none          &none
+  &kp LEFT    &m_backticks   &m_s_quotes    &m_quotes      &none             &td_at_accent  &td_mi_un      &td_pl_as      &td_ene        &kp RIGHT
+  &none       &m_braces      &m_brackets    &m_parens      &kp LEFT          &m_d_quotes    &td_dot_coln   &td_comm_semi  &td_amp_pipe   &td_sl_bs
+  &kp ESC     &none          &none          &m_angle       &none             &m_s_quotes    &td_eql_neq    &td_dlr_hash   &td_ique_ques      &td_perc_caret
                                 &none          &none          &none             &none          &none
               >;
           };
