@@ -90,8 +90,10 @@
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <300>;
-              flavor = "tap-preferred";
+              flavor = "balanced";             // Optimizado para permitir el solapamiento de letras
+              tapping-term-ms = <200>;         // Tiempo intermedio ideal para modificadores
+              quick-tap-ms = <175>;            // Permite repetir la tecla en taps seguidos
+              require-prior-idle-ms = <135>;   // Evita falsos modificadores si escribes rápido
               bindings = <&kp>, <&kp>;
           };
 
@@ -105,24 +107,29 @@
           ht_shft_custom: ht_shft_custom {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <300>;
-              flavor = "balanced";
-              bindings = <&kp>, <&td_ques_comm>;
+              tapping-term-ms = <200>;
+              flavor = "tap-preferred";
+              require-prior-idle-ms = <125>;
+              bindings = <&mo_l2_color>, <&kp>;
           };
 
-          lt_l1: layer_tap_l1 {
+         lt_l1: layer_tap_l1 {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <300>;
-              flavor = "tap-preferred";
+              flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
+              tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
+              quick-tap-ms = <175>;            // Si haces doble tap rápido, repite la letra (útil para palabras como "coor-dinación")
+              require-prior-idle-ms = <135>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
               bindings = <&mo_l1_color>, <&kp>;
           };
 
           lt_l2: layer_tap_l2 {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              tapping-term-ms = <300>;
-              flavor = "tap-preferred";
+              tapping-term-ms = <200>;
+              flavor = "balanced";  
+              quick-tap-ms = <175>;
+              require-prior-idle-ms = <125>;
               bindings = <&mo_l2_color>, <&kp>;
           };
 
