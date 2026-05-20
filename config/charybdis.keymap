@@ -114,7 +114,7 @@
 
         lt_l1: layer_tap_l1 {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
             tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
             require-prior-idle-ms = <150>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
@@ -123,7 +123,7 @@
 
         lt_l2: layer_tap_l2 {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
             tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
             require-prior-idle-ms = <150>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
