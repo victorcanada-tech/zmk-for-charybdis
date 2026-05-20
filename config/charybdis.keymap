@@ -166,7 +166,7 @@
 
         layer_1 {
             bindings = <
-    &none          &m_backticks   &m_s_quotes    &m_quotes      &kp LEFT          &kp RIGHT        &td_ene         &td_mi_un          &td_pl_as          &none
+    &none          &m_backticks   &m_s_quotes    &m_quotes      &kp LEFT          &kp RIGHT        &td_ene          &td_mi_un          &td_pl_as          &none
     &none          &m_braces      &m_brackets    &m_parens      &none             &m_quotes         &td_dot_coln    &td_comm_semi      &td_amp_pipe       &td_sl_bs
     &kp ESC        &none          &none          &m_angle       &none             &m_s_quotes       &td_eql_neq     &td_dlr_hash       &td_ique_ques      &td_perc_caret
                                                                 &none             &none             &none           &none              &none
@@ -211,9 +211,9 @@
 
         layer_6 {
             bindings = <
-    &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y    &hm LC(LALT) U  &hm LALT I      &kp O              &kp P
-    &kp A          &kp S          &kp D          &kp F          &kp G              &kp H        &kp J           &kp K               &kp L              &none
-    &kp Z          &kp X          &kp C          &kp V          &kp B              &kp N        &kp M           &td_dot_at          &to_l0             &none
+    &kp Q          &kp W          &kp E            &kp R &kp T      &hm LS(LALT) Y        &kp U        &kp I            &kp O               &kp P              &none
+    &kp A          &hm LALT S     &hm LC(LALT) D   &hm LS(LALT) F   &kp G                 &kp H        &hm LS(LALT) J   &hm LC(LALT) K      &m LALT L          &none
+    &kp Z          &kp X          &kp C            &kp V            &kp B                 &kp N        &kp M            &td_dot_at          &to_l0             &none
                                     &none        &none          &none              &none       &none
             >;
         };
