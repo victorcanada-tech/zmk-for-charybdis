@@ -68,6 +68,12 @@
             bindings = <&macro_tap &tog 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
         };
 
+        tog_l6: tog_l6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &tog 6>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
+        };
+
         to_l0: to_l0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -143,6 +149,7 @@
         td_ique_ques:  td_ique_ques  { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <180>; bindings = <&kp ES_QUES>, <&kp ES_IQUE>; };
         td_at_accent:  td_at_accent  { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <180>; bindings = <&kp LBKT>, <&kp ES_AT>; };
         td_ene:        td_ene        { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp SEMI>, <&kp ES_TILDE>; };
+        td_y:          td_y          { compatible = "zmk,behavior-tap-dance"; #binding-cells = <0>; tapping-term-ms = <160>; bindings = <&kp Y>, <&kp ES_TILDE>; };
     };
 
     keymap {
@@ -150,17 +157,17 @@
 
         layer_0 {
             bindings = <
-    &kp Q                &kp W          &kp E          &kp R          &kp T            &kp Y        &kp U           &kp I               &kp O               &kp P
+    &kp Q                &kp W          &kp E          &kp R          &kp T            &td_y        &kp U           &kp I               &kp O               &kp P
     &hm_shift LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G            &kp H        &hm RGUI J      &hm RCTRL K         &hm RALT L          &hm_shift LSHFT ES_QUES
-    &kp Z                &kp X          &kp C          &kp V          &kp B            &kp N        &kp M           &td_dot_at          &tog_l2             &tog_l3
+    &kp Z                &kp X          &kp C          &kp V          &kp B            &kp N        &kp M           &td_dot_at          &tog_l6             &tog_l3
                                     &lt_l1 0 TAB     &lt_l2 0 BSPC   &kp BSPC          &lt_l2 0 RET          &lt_l1 0 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-    &kp LEFT       &m_backticks   &m_s_quotes    &m_quotes      &none             &td_at_accent     &td_ene         &td_mi_un          &td_pl_as          &kp RIGHT
-    &none          &m_braces      &m_brackets    &m_parens      &kp LEFT          &m_quotes         &td_dot_coln    &td_comm_semi      &td_amp_pipe       &td_sl_bs
+    &none          &m_backticks   &m_s_quotes    &m_quotes      &kp LEFT          &kp RIGHT        &td_ene         &td_mi_un          &td_pl_as          &none
+    &none          &m_braces      &m_brackets    &m_parens      &none             &m_quotes         &td_dot_coln    &td_comm_semi      &td_amp_pipe       &td_sl_bs
     &kp ESC        &none          &none          &m_angle       &none             &m_s_quotes       &td_eql_neq     &td_dlr_hash       &td_ique_ques      &td_perc_caret
                                                                 &none             &none             &none           &none              &none
             >;
@@ -200,6 +207,16 @@
     &to 0          &none          &none          &none          &none             &none             &none           &none              &none              &none
                                                                 &mkp LCLK         &mkp RCLK         &none           &none              &none
             >;
+        }; 
+
+        layer_6 {
+            bindings = <
+    &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y    &hm LC(LALT) U  &hm LALT I      &kp O              &kp P
+    &kp A          &kp S          &kp D          &kp F          &kp G              &kp H        &kp J           &kp K               &kp L              &none
+    &kp Z          &kp X          &kp C          &kp V          &kp B              &kp N        &kp M           &td_dot_at          &to_l0             &none
+                                    &none        &none          &none              &none       &none
+            >;
         };
+
     };
 };
