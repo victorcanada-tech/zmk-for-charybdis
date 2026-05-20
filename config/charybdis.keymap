@@ -157,8 +157,7 @@
           layer_0 {
               bindings = <
   &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y         &hm LC(LALT) U  &hm LALT I     &kp O          &kp P
-  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0   &hm RGUI J      &hm RCTRL K    &hm RALT L
-  &ht_shft_custom RSHFT 0
+  &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &ht_h_custom ES_AT 0   &hm RGUI J      &hm RCTRL K    &hm RALT L     &ht_shft_custom RSHFT 0
   &kp Z          &kp X          &kp C          &kp V          &kp B             &ht_n_custom SEMI 0    &kp M           &kp ES_DOT     &tog_l2        &tog_l3
                                 &lt_l1 0 TAB   &lt_l2 0 RET   &kp BSPC          &lt_l2 0 RET          &lt_l1 0 SPACE
               >;
