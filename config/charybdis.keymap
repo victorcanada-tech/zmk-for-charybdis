@@ -95,7 +95,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        hm_shift: homerow_mods {
+        hm_shift: homerow_mods_shift {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";             // Optimizado para permitir el solapamiento de letras
