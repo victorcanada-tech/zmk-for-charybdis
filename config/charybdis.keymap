@@ -90,8 +90,18 @@
             #binding-cells = <2>;
             flavor = "balanced";             // Optimizado para permitir el solapamiento de letras
             tapping-term-ms = <200>;         // Tiempo intermedio ideal para modificadores
-            quick-tap-ms = <175>;            // Permite repetir la tecla en taps seguidos
-            require-prior-idle-ms = <135>;   // Evita falsos modificadores si escribes rápido
+            quick-tap-ms = <160>;            // Permite repetir la tecla en taps seguidos
+            require-prior-idle-ms = <155>;   // Evita falsos modificadores si escribes rápido
+            bindings = <&kp>, <&kp>;
+        };
+
+        hm_shift: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";             // Optimizado para permitir el solapamiento de letras
+            tapping-term-ms = <160>;         // Tiempo intermedio ideal para modificadores
+            quick-tap-ms = <140>;            // Permite repetir la tecla en taps seguidos
+            require-prior-idle-ms = <150>;   // Evita falsos modificadores si escribes rápido
             bindings = <&kp>, <&kp>;
         };
 
@@ -106,19 +116,19 @@
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
-            tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
-            quick-tap-ms = <175>;            // Si haces doble tap rápido, repite la letra
-            require-prior-idle-ms = <135>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
+            tapping-term-ms = <180>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
+            quick-tap-ms = <150>;            // Si haces doble tap rápido, repite la letra
+            require-prior-idle-ms = <140>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
             bindings = <&mo_l1_color>, <&kp>;
         };
 
         lt_l2: layer_tap_l2 {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";  
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <125>;
+            flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
+            tapping-term-ms = <180>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
+            quick-tap-ms = <150>;            // Si haces doble tap rápido, repite la letra
+            require-prior-idle-ms = <140>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
             bindings = <&mo_l2_color>, <&kp>;
         };
 
@@ -142,9 +152,9 @@
 
         layer_0 {
             bindings = <
-    &kp Q          &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y    &hm LC(LALT) U  &hm LALT I         &kp O              &kp P
-    &hm LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &kp H             &hm RGUI J      &hm RCTRL K        &hm RALT L         &hm LSHFT ES_QUES
-    &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N             &kp M           &td_dot_at         &tog_l2            &tog_l3
+    &kp Q                &kp W          &hm LALT E     &hm LC(LALT) R &hm LS(LALT) T    &hm LS(LALT) Y    &hm LC(LALT) U  &hm LALT I         &kp O              &kp P
+    &hm_shift LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G             &kp H             &hm RGUI J      &hm RCTRL K        &hm RALT L         &hm_shift LSHFT ES_QUES
+    &kp Z          &kp X          &kp C          &kp V          &kp B             &kp N                   &kp M           &td_dot_at         &tog_l2            &tog_l3
                                                  &lt_l1 0 TAB   &lt_l2 0 BSPC     &kp BSPC          &lt_l2 0 RET    &lt_l1 0 SPACE
             >;
         };
