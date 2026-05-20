@@ -150,10 +150,10 @@
 
         layer_0 {
             bindings = <
-    &kp Q                &kp W          &kp E          &kp R          &kp T       &kp Y         &kp U            &kp I               &kp O               &kp P
-    &hm_shift LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G       &kp H         &hm RGUI J      &hm RCTRL K         &hm RALT L          &hm_shift LSHFT ES_QUES
-    &kp Z                &kp X          &kp C          &kp V          &kp B       &kp N         &kp M           &td_dot_at          &tog_l2             &tog_l3
-                                                                      &lt_l1 TAB  &lt_l2 BSPC   &kp BSPC        &lt_l2 RET          &lt_l1 SPACE
+    &kp Q                &kp W          &kp E          &kp R          &kp T            &kp Y        &kp U           &kp I               &kp O               &kp P
+    &hm_shift LSHFT A    &hm LALT S     &hm LCTRL D    &hm LGUI F     &kp G            &kp H        &hm RGUI J      &hm RCTRL K         &hm RALT L          &hm_shift LSHFT ES_QUES
+    &kp Z                &kp X          &kp C          &kp V          &kp B            &kp N        &kp M           &td_dot_at          &tog_l2             &tog_l3
+                                        &lt_l1 TAB     &lt_l2 BSPC   &kp BSPC          &lt_l2 RET          &lt_l1 SPACE
             >;
         };
 
