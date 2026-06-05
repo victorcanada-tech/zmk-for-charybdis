@@ -124,6 +124,7 @@
             flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
             tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
             require-prior-idle-ms = <150>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
+            quick-tap-ms = <150>;
             bindings = <&mo_l1_color>, <&kp>;
         };
 
@@ -133,6 +134,7 @@
             flavor = "balanced";             // CAMBIO CLAVE: Entiende el solapamiento de dedos al escribir
             tapping-term-ms = <200>;         // Reducido para que la capa/modificador responda rápido cuando lo buscas
             require-prior-idle-ms = <150>;   // Si hay ráfaga de escritura, prioriza el TAP al 100%
+            quick-tap-ms = <150>;
             bindings = <&mo_l2_color>, <&kp>;
         };
 
