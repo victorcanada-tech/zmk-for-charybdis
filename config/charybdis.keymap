@@ -59,11 +59,6 @@
               bindings = <&macro_tap &to 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
           };
 
-          to_l6: to_l6 {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&macro_tap &to 6>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
-          };
 
           to_l0: to_l0 {
               compatible = "zmk,behavior-macro";
@@ -124,7 +119,7 @@
               bindings = <
       &kp Q              &kp W         &kp E         &kp R         &kp T                &td_y         &td_u_comm    &kp I         &kp O         &kp P
       &hm_shift LSHFT A  &hm LALT S    &hm LCTRL D   &hm LGUI F    &kp G                &kp H         &hm RGUI J    &hm RCTRL K   &hm RALT L    &hm_shift LSHFT ES_QUES
-      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &to_l6        &to_l3
+      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &tog 4        &to_l3
                                        &to_l1        &to_l2        &kp BSPC             &lt 2 RET     &lt 1  SPACE
               >;
           };
@@ -160,7 +155,7 @@
               bindings = <
       &none              &none         &none         &none         &mo 5                &none         &none         &none         &none         &none
       &none              &kp LG(X)     &kp LG(V)     &kp LG(C)     &msc SCRL_DOWN       &none         &none         &none         &none         &none
-      &to_l0             &none         &none         &none         &msc SCRL_UP         &none         &none         &none         &none         &none
+      &none              &none         &none         &none         &msc SCRL_UP         &none         &none         &none         &tog 4        &none
                                        &mkp LCLK     &mkp RCLK     &mkp MCLK            &none         &none
               >;
           };
@@ -173,15 +168,5 @@
                                             &mkp LCLK          &mkp RCLK          &none                &none         &none
               >;
           };
-
-          layer_6 {
-              bindings = <
-      &kp Q              &kp W         &kp E              &kp R              &kp T                &hm LS(LALT) Y  &kp U              &kp I              &kp O         &kp P
-      &kp A              &hm LALT S    &hm LC(LALT) D     &hm LS(LALT) F     &kp G                &kp H           &hm LS(LALT) J     &hm LC(LALT) K     &hm LALT L    &none
-      &kp Z              &kp X         &kp C              &kp V              &kp B                &kp N           &kp M              &td_dot_at         &to_l0        &none
-                                       &none              &none              &none                &none           &none
-              >;
-          };
-
       };
   };
