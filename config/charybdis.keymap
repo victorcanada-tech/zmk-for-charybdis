@@ -40,28 +40,28 @@
 
   / {
       macros {
-          tog_l1: tog_l1 {
+          to_l1: to_l1 {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
-              bindings = <&macro_tap &tog 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AZUL,100,50)>;
+              bindings = <&macro_tap &to 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AZUL,100,50)>;
           };
 
-          tog_l2: tog_l2 {
+          to_l2: to_l2 {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
-              bindings = <&macro_tap &tog 2>, <&macro_tap &rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
+              bindings = <&macro_tap &to 2>, <&macro_tap &rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
           };
 
-          tog_l3: tog_l3 {
+          to_l3: to_l3 {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
-              bindings = <&macro_tap &tog 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
+              bindings = <&macro_tap &to 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
           };
 
-          tog_l6: tog_l6 {
+          to_l6: to_l6 {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
-              bindings = <&macro_tap &tog 6>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
+              bindings = <&macro_tap &to 6>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
           };
 
           to_l0: to_l0 {
@@ -123,8 +123,8 @@
               bindings = <
       &kp Q              &kp W         &kp E         &kp R         &kp T                &td_y         &td_u_comm    &kp I         &kp O         &kp P
       &hm_shift LSHFT A  &hm LALT S    &hm LCTRL D   &hm LGUI F    &kp G                &kp H         &hm RGUI J    &hm RCTRL K   &hm RALT L    &hm_shift LSHFT ES_QUES
-      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &tog_l6       &tog_l3
-                                       &kp BSPC      &tog_l1       &tog_l2              &kp RET       &kp SPACE
+      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &to_l6       &to_l3
+                                       &kp BSPC      &to_l1       &to_l2                &kp RET       &kp SPACE
               >;
           };
 
