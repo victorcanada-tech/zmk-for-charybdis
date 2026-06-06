@@ -83,7 +83,7 @@
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              flavor = "balanced";
+              flavor = "tap-preferred";
               tapping-term-ms = <200>;
               quick-tap-ms = <160>;
               require-prior-idle-ms = <155>;
@@ -93,7 +93,7 @@
           hm_shift: homerow_mods_shift {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
-              flavor = "balanced";
+              flavor = "tap-preferred";
               tapping-term-ms = <160>;
               quick-tap-ms = <140>;
               require-prior-idle-ms = <150>;
@@ -133,7 +133,7 @@
       &none              &m_backticks &m_s_quotes  &m_quotes    &kp LEFT       &kp RIGHT    &td_ene      &td_mi_un    &td_pl_as    &none
       &none              &m_braces    &m_brackets  &m_parens    &none          &m_quotes    &td_dot_coln &td_comm_semi &td_amp_pipe &td_sl_bs
       &kp ESC            &none        &none        &m_angle     &none          &m_s_quotes  &td_eql_neq  &td_dlr_hash &td_ique_ques &td_perc_caret
-                                      &to_l0       &none        &kp BSPC       &kp RET      &kp SPACE
+                                      &to_l0       &to_l0       &kp BSPC       &kp RET      &kp SPACE
               >;
           };
 
@@ -142,7 +142,7 @@
       &kp LS(LALT)       &kp N7       &kp N8       &kp N9       &none          &none        &none        &none        &none        &kp LS(LALT)
       &kp LC(LALT)       &kp N4       &kp N5       &kp N6       &kp N0         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp LC(LALT)
       &kp LALT           &kp N1       &kp N2       &kp N3       &none          &none        &none        &none        &to_l0       &kp LALT
-                                      &none        &to_l0       &kp BSPC       &kp RET      &kp SPACE
+                                      &to_l0       &to_l0       &kp BSPC       &kp RET      &kp SPACE
               >;
           };
 
