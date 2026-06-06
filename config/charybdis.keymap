@@ -40,6 +40,14 @@
 
   / {
       macros {
+          mo_l1_color: mo_l1_color {
+              compatible = "zmk,behavior-macro";
+              #binding-cells = <0>;
+              bindings = <&macro_press &mo 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AZUL,100,50)>,
+                         <&macro_pause_for_release>, <&macro_release &mo 1>,
+                         <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
+          };
+
           tog_l1: tog_l1 {
               compatible = "zmk,behavior-macro";
               #binding-cells = <0>;
@@ -80,13 +88,23 @@
       };
 
       behaviors {
+          lt_l1: layer_tap_l1 {
+              compatible = "zmk,behavior-hold-tap";
+              #binding-cells = <2>;
+              flavor = "balanced";
+              tapping-term-ms = <200>;
+              quick-tap-ms = <150>;
+              require-prior-idle-ms = <150>;
+              bindings = <&mo_l1_color>, <&kp>;
+          };
+
           hm: homerow_mods {
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
               flavor = "tap-preferred";
               tapping-term-ms = <200>;
               quick-tap-ms = <160>;
-              require-prior-idle-ms = <200>;
+              require-prior-idle-ms = <250>;
               bindings = <&kp>, <&kp>;
           };
 
@@ -94,9 +112,9 @@
               compatible = "zmk,behavior-hold-tap";
               #binding-cells = <2>;
               flavor = "tap-preferred";
-              tapping-term-ms = <160>;
+              tapping-term-ms = <200>;
               quick-tap-ms = <140>;
-              require-prior-idle-ms = <200>;
+              require-prior-idle-ms = <250>;
               bindings = <&kp>, <&kp>;
           };
 
@@ -124,7 +142,7 @@
       &kp Q              &kp W        &kp E        &kp R        &kp T          &td_y        &td_u_comm   &kp I        &kp O        &kp P
       &hm_shift LSHFT A  &hm LALT S   &hm LCTRL D  &hm LGUI F   &kp G          &kp H        &hm RGUI J   &hm RCTRL K  &hm RALT L   &hm_shift LSHFT ES_QUES
       &kp Z              &kp X        &kp C        &kp V        &kp B          &kp N        &kp M        &td_dot_at   &tog_l6      &tog_l3
-                                      &tog_l1      &tog_l2      &kp BSPC       &kp RET      &kp SPACE
+                                      &kp BSPC     &tog_l2      &tog_l1        &kp RET      &lt_l1 0 SPACE
               >;
           };
 
@@ -133,7 +151,7 @@
       &none              &m_backticks &m_s_quotes  &m_quotes    &kp LEFT       &kp RIGHT    &td_ene      &td_mi_un    &td_pl_as    &none
       &none              &m_braces    &m_brackets  &m_parens    &none          &m_quotes    &td_dot_coln &td_comm_semi &td_amp_pipe &td_sl_bs
       &kp ESC            &none        &none        &m_angle     &none          &m_s_quotes  &td_eql_neq  &td_dlr_hash &td_ique_ques &td_perc_caret
-                                      &to_l0       &to_l0       &kp BSPC       &kp RET      &kp SPACE
+                                      &kp BSPC     &to_l0       &to_l0         &kp RET      &kp SPACE
               >;
           };
 
@@ -142,7 +160,7 @@
       &kp LS(LALT)       &kp N7       &kp N8       &kp N9       &none          &none        &none        &none        &none        &kp LS(LALT)
       &kp LC(LALT)       &kp N4       &kp N5       &kp N6       &kp N0         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp LC(LALT)
       &kp LALT           &kp N1       &kp N2       &kp N3       &none          &none        &none        &none        &to_l0       &kp LALT
-                                      &to_l0       &to_l0       &kp BSPC       &kp RET      &kp SPACE
+                                      &kp BSPC     &to_l0       &to_l0         &kp RET      &kp SPACE
               >;
           };
 
