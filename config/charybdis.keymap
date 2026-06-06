@@ -123,8 +123,8 @@
               bindings = <
       &kp Q              &kp W         &kp E         &kp R         &kp T                &td_y         &td_u_comm    &kp I         &kp O         &kp P
       &hm_shift LSHFT A  &hm LALT S    &hm LCTRL D   &hm LGUI F    &kp G                &kp H         &hm RGUI J    &hm RCTRL K   &hm RALT L    &hm_shift LSHFT ES_QUES
-      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &to_l6        &to_l3
-                                       &kp BSPC      &to_l1        &to_l2               &kp RET       &kp SPACE
+      &kp Z              &kp X         &kp C         &kp V         &kp B                &kp N         &kp M         &td_dot_at    &to_l6        &to_l2
+                                       &kp BSPC      &to_l2        &to_l2               &kp RET       &kp SPACE
               >;
           };
 
