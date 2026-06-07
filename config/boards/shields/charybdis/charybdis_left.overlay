@@ -6,6 +6,10 @@
 
 #include "charybdis.dtsi"
 
+&uicr {
+    nfct-pins-as-gpios;
+};
+
 &kscan0 {
 	col-gpios
 		= <&gpio0 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
