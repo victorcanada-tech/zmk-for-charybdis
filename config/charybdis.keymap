@@ -41,30 +41,42 @@
 
   / {
       macros {
-          to_l1: to_l1 {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&macro_tap &to 1>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AZUL,100,50)>;
-          };
+            to_l1: to_l1 {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_tap>, <&to 1>
+                    , <&macro_wait_time 50>
+                    , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(AZUL,100,50)>;
+            };
 
-          to_l2: to_l2 {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&macro_tap &to 2>, <&macro_tap &rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
-          };
+            to_l2: to_l2 {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_tap>, <&to 2>
+                    , <&macro_wait_time 50>
+                    , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
+            };
 
-          to_l3: to_l3 {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&macro_tap &to 3>, <&macro_tap &rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
-          };
+            to_l3: to_l3 {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_tap>, <&to 3>
+                    , <&macro_wait_time 50>
+                    , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
+            };
 
 
-          to_l0: to_l0 {
-              compatible = "zmk,behavior-macro";
-              #binding-cells = <0>;
-              bindings = <&macro_tap &to 0>, <&macro_tap &rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
-          };
+            to_l0: to_l0 {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings
+                    = <&macro_tap>, <&to 0>
+                    , <&macro_wait_time 50>
+                    , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
+            };
 
           m_angle:     m_angle     { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LABK>, <&kp ES_RABK>, <&kp LEFT>; };
           m_parens:    m_parens    { compatible = "zmk,behavior-macro"; #binding-cells = <0>; bindings = <&kp ES_LPAR>, <&kp ES_RPAR>, <&kp LEFT>; };
