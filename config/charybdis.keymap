@@ -46,7 +46,7 @@ compatible = "zmk,behavior-macro";
 #binding-cells = <0>;
 bindings
 = <&macro_tap>, <&to 1>
-, <&macro_wait_time 50>
+, <&macro_wait_time 100>
 , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(AZUL,100,50)>;
 };
 
@@ -55,7 +55,7 @@ compatible = "zmk,behavior-macro";
 #binding-cells = <0>;
 bindings
 = <&macro_tap>, <&to 2>
-, <&macro_wait_time 50>
+, <&macro_wait_time 100>
 , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(ROJO,100,50)>;
 };
 
@@ -64,7 +64,7 @@ compatible = "zmk,behavior-macro";
 #binding-cells = <0>;
 bindings
 = <&macro_tap>, <&to 3>
-, <&macro_wait_time 50>
+, <&macro_wait_time 100>
 , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(AMARILLO,100,50)>;
 };
 
@@ -73,7 +73,7 @@ compatible = "zmk,behavior-macro";
 #binding-cells = <0>;
 bindings
 = <&macro_tap>, <&to 0>
-, <&macro_wait_time 50>
+, <&macro_wait_time 100>
 , <&macro_tap>, <&rgb_ug RGB_COLOR_HSB(LILA,100,50)>;
 };
 
@@ -93,7 +93,7 @@ compatible = "zmk,behavior-hold-tap";
 flavor = "tap-preferred";
 tapping-term-ms = <200>;
 quick-tap-ms = <160>;
-require-prior-idle-ms = <250>;
+require-prior-idle-ms = <2>;
 bindings = <&kp>, <&kp>;
 };
 
