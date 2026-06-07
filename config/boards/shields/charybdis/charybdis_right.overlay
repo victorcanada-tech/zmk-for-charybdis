@@ -17,10 +17,15 @@
 		, <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 		, <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 		, <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+		
 		;
 };
 
-// trackball bus (SPI0) - Configuración 3-wire SPI compartiendo el pin 17
+  //&right_encoder {
+  //    status = "okay";
+  //};
+
+// trackball bus
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
@@ -56,10 +61,12 @@
         irq-gpios = <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         scroll-layers = <1>;
         snipe-layers = <5>;
+        //automouse-layer = <4>;
     };
 };
 
-// RGB bus (SPI3)
+
+//RGB bus
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
@@ -87,11 +94,11 @@
         compatible = "worldsemi,ws2812-spi";
 
         /* SPI */
-        reg = <0>;
+        reg = <0>; /* ignored, but necessary for SPI bindings */
         spi-max-frequency = <4000000>;
 
         /* WS2812 */
-        chain-length = <27>; /* Número de LEDs lado derecho */
+        chain-length = <27>; /* number of LEDs */
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN
@@ -100,9 +107,13 @@
     };
 };
 
+
+
 / {
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
     };
 };
+
+
