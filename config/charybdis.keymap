@@ -233,7 +233,7 @@
 
         layer_1 {
             bindings = <
-            &kb ESC                &m_backticks     &m_s_quotes      &m_quotes         &kp LEFT              &kp RIGHT         &td_ene           &td_mi_un         &td_pl_as         &kp ES_AT
+            &kp ESC                &m_backticks     &m_s_quotes      &m_quotes         &kp LEFT              &kp RIGHT         &td_ene           &td_mi_un         &td_pl_as         &kp ES_AT
             &none                &m_braces        &m_brackets      &m_parens         &none                 &m_quotes         &td_dot_coln      &td_comm_semi     &td_amp_pipe      &td_sl_bs
             &kp ESC              &none            &none            &m_angle          &none                 &m_s_quotes       &td_eql_neq       &td_dlr_hash      &td_ique_ques     &td_perc_caret
                                                   &to_l0           &to_l0            &kp BSPC              &kp RET           &kp SPACE
