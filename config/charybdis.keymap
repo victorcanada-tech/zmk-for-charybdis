@@ -227,13 +227,13 @@
             &kp Q                &kp W            &kp E            &kp R             &kp T                 &td_y             &kp U             &kp I             &kp O             &kp P
             &hm_shift LSHFT A    &hm LALT S       &hm LCTRL D      &hm LGUI F        &kp G                 &kp H             &hm RGUI J        &hm RCTRL K       &hm RALT L        &hm_shift LSHFT ES_QUES
             &kp Z                &kp X            &kp C            &kp V             &kp B                 &kp N             &kp M             &td_dot_at        &kp ES_COMM       &kp ESC
-                                                  &kp BSPC         &ht_l3 0 TAB      &lt 4 ESC             &lt 2 RET         &lt 1 SPACE
+                                                  &kp BSPC         &ht_l3 0 TAB      &to 4                 &lt 2 RET         &lt 1 SPACE
             >;
         };
 
         layer_1 {
             bindings = <
-            &none                &m_backticks     &m_s_quotes      &m_quotes         &kp LEFT              &kp RIGHT         &td_ene           &td_mi_un         &td_pl_as         &kp ES_AT
+            &kb ESC                &m_backticks     &m_s_quotes      &m_quotes         &kp LEFT              &kp RIGHT         &td_ene           &td_mi_un         &td_pl_as         &kp ES_AT
             &none                &m_braces        &m_brackets      &m_parens         &none                 &m_quotes         &td_dot_coln      &td_comm_semi     &td_amp_pipe      &td_sl_bs
             &kp ESC              &none            &none            &m_angle          &none                 &m_s_quotes       &td_eql_neq       &td_dlr_hash      &td_ique_ques     &td_perc_caret
                                                   &to_l0           &to_l0            &kp BSPC              &kp RET           &kp SPACE
